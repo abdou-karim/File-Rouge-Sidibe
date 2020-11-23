@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ApprenantsRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
@@ -53,24 +55,40 @@ class Apprenants extends User
 {
     /**
      * @ORM\Column(type="string", length=30)
-     * @Groups({"apprenant:read", "apprenant:write"})
+     * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
      * @Assert\NotBlank
      */
     private $genre;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"apprenant:read", "apprenant:write"})
+     * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
      * @Assert\NotBlank
      */
     private $adresse;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups({"apprenant:read", "apprenant:write"})
+     * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
      * @Assert\NotBlank
      */
     private $telephone;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=ProfilSortie::class, inversedBy="apprenants")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $profilSortie;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="apprenants")
+     */
+    private $groupes;
+
+    public function __construct()
+    {
+        $this->groupes = new ArrayCollection();
+    }
 
 
     public function getGenre(): ?string
@@ -105,6 +123,45 @@ class Apprenants extends User
     public function setTelephone(string $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    public function getProfilSortie(): ?ProfilSortie
+    {
+        return $this->profilSortie;
+    }
+
+    public function setProfilSortie(?ProfilSortie $profilSortie): self
+    {
+        $this->profilSortie = $profilSortie;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Groupe[]
+     */
+    public function getGroupes(): Collection
+    {
+        return $this->groupes;
+    }
+
+    public function addGroupe(Groupe $groupe): self
+    {
+        if (!$this->groupes->contains($groupe)) {
+            $this->groupes[] = $groupe;
+            $groupe->addApprenant($this);
+        }
+
+        return $this;
+    }
+
+    public function removeGroupe(Groupe $groupe): self
+    {
+        if ($this->groupes->removeElement($groupe)) {
+            $groupe->removeApprenant($this);
+        }
 
         return $this;
     }

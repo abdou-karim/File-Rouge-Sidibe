@@ -2,7 +2,6 @@
 namespace App\DataFixtures;
 use App\Entity\Profils;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
 class ProfilFixtures extends Fixture
@@ -17,7 +16,7 @@ class ProfilFixtures extends Fixture
         $libelles=['Administrateur',"Formateur","Community Manager","Apprenant"];
 
             for ($i=0;$i<=3;$i++){
-                $profil=new Profils();
+                $profil=new ProfilS();
                 $profil->setLibelle($libelles[$i])
                     ->setArchivage(false);
                 $manager->persist($profil);

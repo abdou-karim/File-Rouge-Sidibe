@@ -73,7 +73,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=180)
      * @Groups({"user:read", "user:write"})
-     * @Groups({"profil:read"})
+     * @Groups({"profil:read","profilSortie:read"})
      * @Assert\NotBlank
      */
     private $username;
@@ -90,7 +90,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
-     * @Groups({"profil:read"})
+     * @Groups({"profil:read","profilSortie:read"})
      * @Assert\NotBlank
      */
     private $fisrtname;
@@ -98,7 +98,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
-     * @Groups({"profil:read"})
+     * @Groups({"profil:read","profilSortie:read"})
      * @Assert\NotBlank
      */
     private $lastname;
@@ -106,7 +106,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
-     * @Groups({"profil:read"})
+     * @Groups({"profil:read","profilSortie:read"})
      * @Assert\NotBlank
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas valide"
@@ -117,7 +117,7 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="blob", nullable=true)
      * @Groups({"user:read", "user:write"})
-     * @Groups({"profil:read"})
+     * @Groups({"profil:read","profilSortie:read"})
      */
     private $photo;
 

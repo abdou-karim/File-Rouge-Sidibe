@@ -4,7 +4,6 @@ namespace App\DataFixtures;
 use App\Entity\Apprenants;
 use App\Entity\CommunityManager;
 use App\Entity\Formateurs;
-use App\Entity\Profils;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
@@ -32,10 +31,11 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
 
                 $nbrUser=2;
                 $userProfil=$this->getReference(ProfilFixtures::getReferenceKey($i %4));
+               // $UserProfilSorti=$this->getReference(ProfilSortieFixtures::getReferenceKey($i %8));
 
 
                 if($userProfil->getLibelle() ==="Apprenant"){
-                    $nbrUser=5;
+                    $nbrUser=10;
                 }
 
                 for ($b=1;$b<=$nbrUser;$b++){
@@ -47,7 +47,9 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                         $user=new Apprenants();
                         $user->setGenre($fake->randomElement(['homme','femme']))
                             ->setTelephone($fake->phoneNumber())
-                            ->setAdresse($fake->address());
+                            ->setAdresse($fake->address())
+                            ->setProfilSortie($this->getReference(ProfilSortieFixtures::getReferenceKey($b %8)));
+
                     }
                     if($userProfil->getLibelle()==="Formateur"){
                         $user=new Formateurs();

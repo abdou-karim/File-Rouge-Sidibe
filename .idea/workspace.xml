@@ -2,8 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b22643e4-9f50-4fc3-83ad-a053fdb8ef80" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataFixtures/ProfilSortieFixtures.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataPersister/ProfilSortiesDataPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ProfilFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ProfilFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Apprenants.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +123,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/web-server-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
       <path value="$PROJECT_DIR$/vendor/deployer/recipes" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kN0ZVCMGmL99lKJQOG1tfSuJVX" />
@@ -150,7 +162,8 @@
       <workItem from="1605885111475" duration="1285000" />
       <workItem from="1605899321222" duration="2189000" />
       <workItem from="1606120854594" duration="5482000" />
-      <workItem from="1606134009437" duration="607000" />
+      <workItem from="1606134009437" duration="1581000" />
+      <workItem from="1606151798789" duration="13154000" />
     </task>
     <servers />
   </component>
@@ -172,10 +185,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="267" y="27" key="#PHP/72.27.1848.1053@72.27.1848.1053" timestamp="1605864027307" />
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser" timestamp="1605864029357">
+    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser" timestamp="1606167153857">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1605864029357" />
+    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606167153857" />
     <state x="72" y="27" width="870" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605710350910">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
