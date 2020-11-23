@@ -36,29 +36,51 @@ class UserController extends AbstractController
      *     name="addUser",
      *     path="/api/admin/users",
      *     methods={"POST"},
-     *     defaults={
-     *          "__controller"="App\Controller\UserController::add",
-     *          "__api_resource_class"=User::class,
-     *          "__api_collection_operation_name"="add_user"
-     *     }
-     * )
+     *
+     * ),
+     *   * @Route(
+     *     name="addApprenants",
+     *     path="/api/apprenants",
+     *     methods={"POST"},
+     *
+     * ),   *   * @Route(
+     *     name="addFormateur",
+     *     path="/api/formateurs",
+     *     methods={"POST"},
+     *
+     * ),
      */
     public function add(Request $request)
     {
         //recupéré tout les données de la requete
         $user = $request->request->all();
-
         //recupération de l'image
         $photo = $request->files->get("photo");
+        if($user['profils']==="api/admin/profils/3"){
 
-        $user = $this->serializer->denormalize($user,"App\Entity\User",true);
-        if(!$photo)
+            $user = $this->serializer->denormalize($user,"App\Entity\CommunityManager",true);
+        }
+        elseif($user['profils']==="api/admin/profils/1"){
+            $user = $this->serializer->denormalize($user,"App\Entity\User",true);
+        }
+        elseif($user['profils']==="api/admin/profils/2"){
+            $user = $this->serializer->denormalize($user,"App\Entity\Formateurs",true);
+        }
+        else{
+
+            $user = $this->serializer->denormalize($user,"App\Entity\Apprenants",true);
+        }
+
+
+
+       if(!$photo)
         {
 
             return new JsonResponse("veuillez mettre une images",Response::HTTP_BAD_REQUEST,[],true);
         }
         //$base64 = base64_decode($imagedata);
-        $photoBlob = fopen($photo->getRealPath(),"rb");
+     $photoBlob = fopen($photo->getRealPath(),"rb");
+
 
         $user->setPhoto($photoBlob);
 
@@ -68,15 +90,31 @@ class UserController extends AbstractController
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
 
-        $password = $user->getPlainPassword();
-        dd($password);
+      /*
+        $user=new User();
         $user->setPassword($this->encoder->encodePassword($user,$password));
+        */
+        $password = $user->getPlainPassword();
+       // $password="test";
+
+        // User class based on symfony security User class
+        $user->setPassword($this->encoder->encodePassword($user, $password));
         $user->setArchivage(false);
+        if ($this->encoder->encodePassword($user, $password)) {
 
-        $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
-        $em->flush();
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($user);
+            $em->flush();
+            return  $this->json('Authenticated',200);
 
-        return $this->json("success",201);
+        } else {
+
+            return  $this->json(' username or password not work',400);
+        }
+
+
+
+
     }
+
 }

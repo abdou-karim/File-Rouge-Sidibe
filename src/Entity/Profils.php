@@ -18,39 +18,46 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
  *  @ApiResource(
  *
  *     collectionOperations={
+ *
  *          "get_admin_profils"={
  *                      "method"="GET",
  *                       "path"="/admin/profils",
- *                      "security"= "is_granted('ROLE_Administrateur'))",
+ *                      "security"= "is_granted('ROLE_Administrateur')",
  *                        "security_message"="Acces non autorisé"
  *
  *     },
+ *      "get_admin_profils_users"={
+ *               "method"="GET",
+ *               "path"="/admin/profils/{id}/users",
+ *                  "security_message"="Acces non autorisé",
+ *              "security"= "is_granted('ROLE_Administrateur')",
+ *          },
  *      "create_profil"={
  *               "method"="POST",
  *               "path"="/admin/profils",
- *              "security"= "is_granted('ROLE_Administrateur'))",
- *                "security_message"="Acces non autorisé",
- *          }
+ *              "security"= "is_granted('ROLE_Administrateur')",
+ *                "security_message"="Acces non autorisé"
+ *          },
  *     },
  *     itemOperations={
  *               "get_admin_profils_id"={
  *               "method"="GET",
  *               "path"="/admin/profils/{id}",
- *              "security"= "is_granted('ROLE_Administrateur'))",
- *                  "security_message"="Acces non autorisé",
+ *              "security"= "is_granted('ROLE_Administrateur')",
+ *                  "security_message"="Acces non autorisé"
  *
  *          },
  *           "put_admin_profils_id"={
  *               "method"="PUT",
  *               "path"="/admin/profils/{id}",
- *              "security"= "is_granted('ROLE_Administrateur'))",
- *                  "security_message"="Acces non autorisé",
+ *              "security"= "is_granted('ROLE_Administrateur')",
+ *                  "security_message"="Acces non autorisé"
  *          },
  *              "delete_profil"={
  *               "method"="DELETE",
  *               "path"="/admin/profils/{id}",
- *                  "security"= "is_granted('ROLE_Administrateur'))",
- *                  "security_message"="Acces non autorisé",
+ *                  "security"= "is_granted('ROLE_Administrateur')",
+ *                  "security_message"="Acces non autorisé"
  *          },
  *     },
  *     attributes={
@@ -71,7 +78,7 @@ class Profils
     protected $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank
      * @Groups({"profils:read", "profils:write"})
      */
@@ -79,7 +86,7 @@ class Profils
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="profils")
-     * @Groups({"profils:read"})
+     *
      */
     private $user;
 

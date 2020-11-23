@@ -37,10 +37,11 @@ class ProfilsDataPersister implements DataPersisterInterface
             $data->setLibelle($data->getLibelle());
             $data->setArchivage(false);
             $this->entityManager->persist($data);
-            $this->entityManager->flush();
+
 
 
         }
+        $this->entityManager->flush();
             return $data;
 
 
@@ -51,8 +52,30 @@ class ProfilsDataPersister implements DataPersisterInterface
      */
     public function remove($data, array $context = [])
     {
-        $data->setArchivage(true);
-        $this->entityManager->persist($data);
-        $this->entityManager->flush();
+
+
+        $users=$data->getUser();
+        if($data->getArchivage()!==true){
+
+            $data->setArchivage(true);
+
+            if($users==null){
+
+                $this->entityManager->persist($data);
+                $this->entityManager->flush();
+            }
+            if($users!==null){
+
+                foreach ($users as $user){
+                    $user->setArchivage(true);
+                    $this->entityManager->persist($data,$user);
+                    $this->entityManager->flush();
+                }
+            }
+        }
+
+
+
+
     }
 }

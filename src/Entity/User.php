@@ -2,28 +2,27 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
-use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Serializer\Annotation\SerializedName;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 
 /**
- * @ORM\Entity(repositoryClass=UserRepository::class)
- * @ORM\InheritanceType("JOINED")
- * @ORM\DiscriminatorColumn(name="Profil", type="string")
- * @ORM\DiscriminatorMap({"admin"="User","apprenant"="Apprenants","formateu"="Formateurs","communityManager"="CommunityManager"})
  * @ApiResource(
- *     collectionOperations={
+ *       collectionOperations={
  *          "get_admin_users"={
  *               "method"="GET",
  *               "path"="/admin/users",
- *              "security"= "is_granted('ROLE_Administrateur'))",
+ *              "security"= "is_granted('ROLE_Administrateur')",
  *                  "security_message"="Acces non autorisé",
- *          }
+ *          },
+ *     "POST"={
+ *        "path"="/admin/users",
+ *     },
  *     },
  *       attributes={
  *              "pagination_enabled"=true
@@ -32,20 +31,22 @@ use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
  *          "get_admin_users_id"={
  *               "method"="GET",
  *               "path"="/admin/users/{id}",
- *              "security"= "is_granted('ROLE_Administrateur'))",
+ *              "security"= "is_granted('ROLE_Administrateur')",
  *                  "security_message"="Acces non autorisé",
+ *                   "defaults"={"id"=null},
  *
  *          },
  *
  *            "modifier_admin_users_id"={
  *               "method"="PUT",
  *               "path"="/admin/users/{id}",
- *                  "security"= "is_granted('ROLE_Administrateur'))",
+ *                  "security"= "is_granted('ROLE_Administrateur')",
  *                  "security_message"="Acces non autorisé",
+ *
  *
  *          },
  *          "delete_user"={"method"="DELETE","path"="/admin/users/{id}","security_message"="Acces non autorisé",
- *     "security"= "is_granted('ROLE_Administrateur'))"},
+ *     "security"= "is_granted('ROLE_Administrateur')"},
  *
  *     },
  *
@@ -53,6 +54,12 @@ use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
  *     normalizationContext={"groups"={"user:read"}},
  *     denormalizationContext={"groups"={"user:write"}}
  * )
+ * @ApiFilter(BooleanFilter::class, properties={"archivage"})
+ * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\InheritanceType("JOINED")
+ * @ORM\DiscriminatorColumn(name="discr", type="string")
+ * @ORM\DiscriminatorMap({"admin"="User","apprenant" = "Apprenants","formateur"="Formateurs","community Managerr"="CommunityManager"})
+ * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface
 {
@@ -64,10 +71,10 @@ class User implements UserInterface
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\NotBlank
+     * @ORM\Column(type="string", length=180)
      * @Groups({"user:read", "user:write"})
-     * @Groups({"profils:read"})
+     * @Groups({"profil:read"})
+     * @Assert\NotBlank
      */
     private $username;
 
@@ -81,57 +88,57 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @Groups({"user:write"})
-     * @SerializedName("password")
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"user:read", "user:write"})
+     * @Groups({"profil:read"})
+     * @Assert\NotBlank
      */
-    private $plainPassword;
+    private $fisrtname;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
+     * @Groups({"profil:read"})
+     * @Assert\NotBlank
+     */
+    private $lastname;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups({"user:read", "user:write"})
+     * @Groups({"profil:read"})
+     * @Assert\NotBlank
      * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email."
+     *     message = "L'email '{{ value }}' n'est pas valide"
      * )
-     * @Groups({"profils:read"})
      */
     private $email;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="blob", nullable=true)
      * @Groups({"user:read", "user:write"})
-     * @Assert\NotBlank
-     * @Groups({"profils:read"})
-     */
-    private $firstname;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     * @Groups({"user:read", "user:write"})
-     * @Assert\NotBlank
-     * @Groups({"profils:read"})
-     */
-    private $lastename;
-
-    /**
-     * @ORM\Column(type="blob")
-     * @Groups({"user:read", "user:write"})
-     * @Assert\NotBlank
-     * @Groups({"profils:read"})
+     * @Groups({"profil:read"})
      */
     private $photo;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Profils::class, inversedBy="user")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="boolean", options={"default":false})
+     * @Groups({"user:read", "user:write"})
+     * @Groups({"profil:read"})
+     */
+    private $archivage;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Profils::class, inversedBy="User")
      * @Groups({"user:read", "user:write"})
      * @Assert\NotBlank
      */
     private $profils;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @Groups({"user:write"})
      */
-    private $archivage;
+    private $plainPassword;
 
     public function getId(): ?int
     {
@@ -203,7 +210,31 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-         $this->plainPassword = null;
+        $this->plainPassword = null;
+    }
+
+    public function getFisrtname(): ?string
+    {
+        return $this->fisrtname;
+    }
+
+    public function setFisrtname(string $fisrtname): self
+    {
+        $this->fisrtname = $fisrtname;
+
+        return $this;
+    }
+
+    public function getLastname(): ?string
+    {
+        return $this->lastname;
+    }
+
+    public function setLastname(string $lastname): self
+    {
+        $this->lastname = $lastname;
+
+        return $this;
     }
 
     public function getEmail(): ?string
@@ -214,30 +245,6 @@ class User implements UserInterface
     public function setEmail(string $email): self
     {
         $this->email = $email;
-
-        return $this;
-    }
-
-    public function getFirstname(): ?string
-    {
-        return $this->firstname;
-    }
-
-    public function setFirstname(string $firstname): self
-    {
-        $this->firstname = $firstname;
-
-        return $this;
-    }
-
-    public function getLastename(): ?string
-    {
-        return $this->lastename;
-    }
-
-    public function setLastename(string $lastename): self
-    {
-        $this->lastename = $lastename;
 
         return $this;
     }
@@ -266,18 +273,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getProfils(): ?Profils
-    {
-        return $this->profils;
-    }
-
-    public function setProfils(?Profils $profils): self
-    {
-        $this->profils = $profils;
-
-        return $this;
-    }
-
     public function getArchivage(): ?bool
     {
         return $this->archivage;
@@ -290,8 +285,20 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getProfils(): ?Profils
+    {
+        return $this->profils;
+    }
+
+    public function setProfils(?Profils $profil): self
+    {
+        $this->profils = $profil;
+
+        return $this;
+    }
+
     /**
-     * @return mixed
+     * Get the value of plainPassword
      */
     public function getPlainPassword()
     {
@@ -299,10 +306,15 @@ class User implements UserInterface
     }
 
     /**
-     * @param mixed $plainPassword
+     * Set the value of plainPassword
+     *
+     * @param $plainPassword
+     * @return  self
      */
-    public function setPlainPassword($plainPassword): void
+    public function setPlainPassword($plainPassword)
     {
         $this->plainPassword = $plainPassword;
+
+        return $this;
     }
 }

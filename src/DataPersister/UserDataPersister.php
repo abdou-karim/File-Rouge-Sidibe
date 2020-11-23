@@ -37,7 +37,7 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
      */
     public function persist($data, array $context = [])
     {
-        if ($data->getPlainPassword()) {
+        /*if ($data->getPlainPassword()) {
             $data->setPassword(
                 $this->_passwordEncoder->encodePassword(
                     $data,
@@ -49,7 +49,9 @@ class UserDataPersister implements ContextAwareDataPersisterInterface
         }
 
         $this->_entityManager->persist($data);
-        $this->_entityManager->flush();
+        $this->_entityManager->flush();*/
+
+        return $data;
     }
 
     /**

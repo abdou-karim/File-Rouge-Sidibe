@@ -30,12 +30,12 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $fake = Factory::create('fr-FR');
             for($i=0;$i<=3;$i++){
 
-                $nbrUser=5;
+                $nbrUser=2;
                 $userProfil=$this->getReference(ProfilFixtures::getReferenceKey($i %4));
 
 
                 if($userProfil->getLibelle() ==="Apprenant"){
-                    $nbrUser=100;
+                    $nbrUser=5;
                 }
 
                 for ($b=1;$b<=$nbrUser;$b++){
@@ -57,11 +57,12 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                     }
                     $user->setProfils($userProfil)
                         ->setUsername( strtolower ($fake->userName))
-                        ->setFirstname($fake->firstName)
-                        ->setLastename($fake->lastName)
+                        ->setFisrtname($fake->firstName)
+                        ->setLastname($fake->lastName)
                         ->setEmail($fake->email)
                         ->setArchivage(false);
-                    $photo = fopen($fake->imageUrl($width = 640, $height = 480),"rb");
+                    /*$photo = fopen($fake->imageUrl($width = 640, $height = 480),'rb');*/
+                    $photo = $fake->imageUrl($width = 640, $height = 480);
                     $user->setPhoto($photo);
                     $password = $this->encode->encodePassword ($user, 'Sidibe123' );
                     $user->setPassword($password);
