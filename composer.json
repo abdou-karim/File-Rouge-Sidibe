@@ -29,11 +29,11 @@
         "symfony/twig-bundle": "5.1.*",
         "symfony/validator": "5.1.*",
         "symfony/yaml": "5.1.*",
-        "symfony/maker-bundle": "^1.23"
+        "symfony/maker-bundle": "^1.23",
+        "doctrine/doctrine-fixtures-bundle": "^3.4"
     },
     "require-dev": {
         "deployer/recipes": "^6.2",
-        "doctrine/doctrine-fixtures-bundle": "^3.4",
         "symfony/debug-bundle": "5.1.*",
         "symfony/web-server-bundle": "4.4.x-dev"
     },
