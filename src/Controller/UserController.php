@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -11,7 +12,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use App\Entity\User;
 class UserController extends AbstractController
 {
     private $encoder;
@@ -23,12 +23,15 @@ class UserController extends AbstractController
         UserPasswordEncoderInterface $encoder,
         SerializerInterface $serializer,
         ValidatorInterface $validator,
-        EntityManagerInterface $em)
+        EntityManagerInterface $em,
+        UserRepository $userRepository
+)
     {
         $this->encoder=$encoder;
         $this->serializer=$serializer;
         $this->validator=$validator;
         $this->em=$em;
+        $this->userRepository=$userRepository;
     }
 
     /**
@@ -111,6 +114,53 @@ class UserController extends AbstractController
 
             return  $this->json(' username or password not work',400);
         }
+
+
+
+
+    }
+    /**
+     * @Route(
+     *     name="updateUser",
+     *     path="/api/admin/users/{id}",
+     *     methods={"PUT"},
+     * ),  * @Route(
+     *     name="updateApprenant",
+     *     path="/api/apprenants/{id}",
+     *     methods={"PUT"},
+     * ), * @Route(
+     *     name="updateFormateur",
+     *     path="/api/formateurs/{id}",
+     *     methods={"PUT"},
+     * ),
+    */
+    public function UpdateUser(Request $request ,int $id){
+
+        $user=$this->userRepository->find($id);
+        $requestAll = $request->request->all();
+
+
+        foreach ($requestAll as $key=>$value){
+
+            if($key !=="_method" || !$value){
+
+                $user->{"set".ucfirst($key)}($value);
+            }
+        }
+        $photo=$request->files->get('photo');
+        $photoBlob = fopen($photo->getRealPath(),"rb");
+
+        if($photo){
+            $user->setPhoto($photoBlob);
+        }
+        $errors = $this->validator->validate($user);
+        if (count($errors)){
+            $errors = $this->serializer->serialize($errors,"json");
+            return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
+        }
+        $this->em->persist($user);
+        $this->em->flush();
+        return $this->json("Success",200);
 
 
 

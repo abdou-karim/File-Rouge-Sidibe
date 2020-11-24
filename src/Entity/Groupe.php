@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\GroupeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -9,6 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass=GroupeRepository::class)
+ * @ApiResource
  */
 class Groupe
 {
@@ -46,6 +49,7 @@ class Groupe
 
     /**
      * @ORM\ManyToMany(targetEntity=Apprenants::class, inversedBy="groupes")
+     * @ApiSubresource()
      */
     private $apprenants;
 

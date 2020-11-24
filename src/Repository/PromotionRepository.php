@@ -47,4 +47,61 @@ class PromotionRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function getApprenantByProfilSorties($idpromo){
+        $query=$this
+            ->createQueryBuilder('p')
+            ->select('p,g,a,ps,aps')
+            ->andWhere('p.id=:idpromo')
+            ->setParameter('idpromo',$idpromo)
+            ->leftJoin('p.groupes','g')
+            ->leftJoin('g.apprenants','a')
+            ->leftJoin('a.profilSortie','ps')
+            ->leftJoin('ps.apprenants','aps')
+            ->getQuery()
+            ->getResult()[0]
+
+            ;
+        foreach ($query->getGroupes() as $groupe){
+            foreach ($groupe->getApprenants() as $iValue) {
+
+                $tab[]= $iValue->getProfilSortie();
+            }
+
+        }
+        /** @var TYPE_NAME $tab */
+        return $tab;
+    }
+
+    public function getApprenantsByPromoByOneProfilSortie($idpromo,$idprofilSortie){
+
+        $query=$this
+            ->createQueryBuilder('p')
+            ->select('p,g,a,ps,aps')
+            ->andWhere('p.id=:idpromo')
+            ->setParameter('idpromo',$idpromo)
+            ->leftJoin('p.groupes','g')
+            ->leftJoin('g.apprenants','a')
+            ->leftJoin('a.profilSortie','ps')
+            ->andWhere('ps.id=:idprofilSortie')
+            ->setParameter('idprofilSortie',$idprofilSortie)
+            ->leftJoin('ps.apprenants','aps')
+            ->getQuery()
+            ->getResult()[0]
+
+
+
+        ;
+        foreach ($query->getGroupes() as $groupe){
+
+
+            foreach ($groupe->getApprenants() as $value){
+
+            }
+                $tab[]= $value->getProfilSortie();
+
+
+        }
+
+        return $tab;
+    }
 }

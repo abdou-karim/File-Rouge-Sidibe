@@ -41,3 +41,18 @@ D
 composer.lock,c/3/c3262e2a0879195bd6a727e90f768bc85ad79ffd
 ?
 server.pass.key,5/1/51603fce601705c5904ec1e72e17bf31d566d50b
+:
+
+.gitignore,a/5/a5cc2925ca8258af241be7e5b0381edf30266302
+Y
+)src/DataFixtures/ProfilSortieFixtures.php,3/a/3acd6b9785150fe9b5eff7366399c64609109f18
+K
+src/Entity/ProfilSortie.php,1/e/1e8d888d175adb65b4ab8274ed7379941d2dbe33
+`
+0src/DataPersister/ProfilSortiesDataPersister.php,0/0/00266fe90934c700c7525ffc0a47e09e83434476
+H
+src/Entity/Promotion.php,1/2/1283891c5be932905a7efc9cc2b76812791bf0e6
+V
+&src/DataFixtures/PromotionFixtures.php,9/b/9b43a59c65132d8804b4b6f9cba5eabb754f82e4
+S
+#src/DataFixtures/GroupeFixtures.php,6/6/66b7589310eb734d573c3a2f31d161676e4c8e0c

@@ -4,11 +4,10 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\ProfilSortieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Event\LifecycleEventArgs;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -46,6 +45,7 @@ class ProfilSortie
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"profilSortie:read", "profilSortie:write"})
+     * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      *
      */
@@ -59,6 +59,8 @@ class ProfilSortie
     /**
      * @ORM\OneToMany(targetEntity=Apprenants::class, mappedBy="profilSortie")
      * @Groups({"profilSortie:read"})
+     * @Groups({"getApprenantsByPs"})
+     * @ApiSubresource()
      */
     private $apprenants;
 

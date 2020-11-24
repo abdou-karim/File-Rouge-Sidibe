@@ -36,15 +36,6 @@ use Symfony\Component\Validator\Constraints as Assert;
  *                   "defaults"={"id"=null},
  *
  *          },
- *
- *            "modifier_admin_users_id"={
- *               "method"="PUT",
- *               "path"="/admin/users/{id}",
- *                  "security"= "is_granted('ROLE_Administrateur')",
- *                  "security_message"="Acces non autorisé",
- *
- *
- *          },
  *          "delete_user"={"method"="DELETE","path"="/admin/users/{id}","security_message"="Acces non autorisé",
  *     "security"= "is_granted('ROLE_Administrateur')"},
  *
@@ -67,6 +58,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"getApprenantsByPs"})
      */
     private $id;
 
@@ -74,6 +66,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
+     * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      */
     private $username;
@@ -92,6 +85,7 @@ class User implements UserInterface
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
      * @Assert\NotBlank
+     * @Groups({"getApprenantsByPs"})
      */
     private $fisrtname;
 
@@ -100,6 +94,7 @@ class User implements UserInterface
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
      * @Assert\NotBlank
+     * @Groups({"getApprenantsByPs"})
      */
     private $lastname;
 
@@ -107,6 +102,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
+     * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas valide"
@@ -118,6 +114,7 @@ class User implements UserInterface
      * @ORM\Column(type="blob", nullable=true)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
+     * @Groups({"getApprenantsByPs"})
      */
     private $photo;
 
@@ -255,6 +252,7 @@ class User implements UserInterface
         {
             $data = stream_get_contents($this->photo);
             if(!$this->photo){
+
                 fclose($this->photo);
             }
 

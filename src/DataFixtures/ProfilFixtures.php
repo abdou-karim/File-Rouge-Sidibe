@@ -13,6 +13,7 @@ class ProfilFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
+
         $libelles=['Administrateur',"Formateur","Community Manager","Apprenant"];
 
             for ($i=0;$i<=3;$i++){

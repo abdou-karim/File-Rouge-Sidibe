@@ -57,12 +57,14 @@ class Apprenants extends User
      * @ORM\Column(type="string", length=30)
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
      * @Assert\NotBlank
+     * @Groups({"getApprenantsByPs"})
      */
     private $genre;
 
     /**
      * @ORM\Column(type="text")
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
+     * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      */
     private $adresse;
@@ -70,6 +72,7 @@ class Apprenants extends User
     /**
      * @ORM\Column(type="string", length=50)
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
+     * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      */
     private $telephone;
@@ -77,6 +80,8 @@ class Apprenants extends User
     /**
      * @ORM\ManyToOne(targetEntity=ProfilSortie::class, inversedBy="apprenants")
      * @ORM\JoinColumn(nullable=false)
+     * @ApiSubresource()
+     *
      */
     private $profilSortie;
 

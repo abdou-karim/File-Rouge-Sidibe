@@ -2,13 +2,16 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\PromotionRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
  * @ORM\Entity(repositoryClass=PromotionRepository::class)
+ * @ApiResource
  */
 class Promotion
 {
@@ -66,8 +69,14 @@ class Promotion
 
     /**
      * @ORM\OneToMany(targetEntity=Groupe::class, mappedBy="promotion")
+     * @ApiSubresource()
      */
     private $groupes;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $dateDebut;
 
     public function __construct()
     {
@@ -226,6 +235,18 @@ class Promotion
                 $groupe->setPromotion(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getDateDebut(): ?\DateTimeInterface
+    {
+        return $this->dateDebut;
+    }
+
+    public function setDateDebut(\DateTimeInterface $dateDebut): self
+    {
+        $this->dateDebut = $dateDebut;
 
         return $this;
     }

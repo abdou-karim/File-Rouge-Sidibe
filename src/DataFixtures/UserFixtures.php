@@ -13,6 +13,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class UserFixtures extends Fixture implements DependentFixtureInterface
 {
+    public static function addApprenantGroupe($i){
+        return sprintf('add_apprenant_%s',$i);
+    }
+    public static function addFormateurGroupe($g){
+        return sprintf('add_formateur_%s',$g);
+    }
 
     private $encode;
     protected $profilRepositiry;
@@ -29,16 +35,16 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
         $fake = Factory::create('fr-FR');
             for($i=0;$i<=3;$i++){
 
-                $nbrUser=2;
+                $nbrUser=5;
                 $userProfil=$this->getReference(ProfilFixtures::getReferenceKey($i %4));
                // $UserProfilSorti=$this->getReference(ProfilSortieFixtures::getReferenceKey($i %8));
 
 
                 if($userProfil->getLibelle() ==="Apprenant"){
-                    $nbrUser=10;
+                    $nbrUser=100;
                 }
 
-                for ($b=1;$b<=$nbrUser;$b++){
+                for ($b=0;$b<$nbrUser;$b++){
 
                     $user=new User();
 
@@ -49,10 +55,12 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                             ->setTelephone($fake->phoneNumber())
                             ->setAdresse($fake->address())
                             ->setProfilSortie($this->getReference(ProfilSortieFixtures::getReferenceKey($b %8)));
+                        $this->addReference(self::addApprenantGroupe($b),$user);
 
                     }
                     if($userProfil->getLibelle()==="Formateur"){
                         $user=new Formateurs();
+                                $this->addReference(self::addFormateurGroupe($b),$user);
                     }
                     if($userProfil->getLibelle()==="Community Manager"){
                         $user=new CommunityManager();
@@ -63,8 +71,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                         ->setLastname($fake->lastName)
                         ->setEmail($fake->email)
                         ->setArchivage(false);
-                    /*$photo = fopen($fake->imageUrl($width = 640, $height = 480),'rb');*/
-                    $photo = $fake->imageUrl($width = 640, $height = 480);
+                    $photo = fopen($fake->imageUrl($width = 640, $height = 480),'rb');
+                    //$photo = $fake->imageUrl($width = 640, $height = 480);
                     $user->setPhoto($photo);
                     $password = $this->encode->encodePassword ($user, 'Sidibe123' );
                     $user->setPassword($password);

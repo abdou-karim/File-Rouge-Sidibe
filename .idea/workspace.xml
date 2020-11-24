@@ -2,19 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b22643e4-9f50-4fc3-83ad-a053fdb8ef80" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/ProfilSortieFixtures.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/ProfilSortiesDataPersister.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201119103941.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201119114544.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201119115341.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201120082237.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201120095827.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201123150238.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20201123231530.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/GroupeFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/GroupeFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/ProfilFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ProfilFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/PromotionFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/PromotionFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Apprenants.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Promotion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Promotion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -163,7 +167,8 @@
       <workItem from="1605899321222" duration="2189000" />
       <workItem from="1606120854594" duration="5482000" />
       <workItem from="1606134009437" duration="1581000" />
-      <workItem from="1606151798789" duration="13154000" />
+      <workItem from="1606151798789" duration="17630000" />
+      <workItem from="1606204884561" duration="13883000" />
     </task>
     <servers />
   </component>
@@ -185,10 +190,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="267" y="27" key="#PHP/72.27.1848.1053@72.27.1848.1053" timestamp="1605864027307" />
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser" timestamp="1606167153857">
+    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser" timestamp="1606174186455">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606167153857" />
+    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606174186455" />
     <state x="72" y="27" width="870" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605710350910">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
