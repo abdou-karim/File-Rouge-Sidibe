@@ -37,10 +37,6 @@ class PromotionFixtures extends  Fixture implements DependentFixtureInterface
             $tabFORMATEURS[]=$tabFormateur;
         }
 
-        for ($m=0;$m<=5;$m++){
-
-            $formateurs=$this->getReference(UserFixtures::addFormateurGroupe($m %5));
-        }
 
                 for ($i=0;$i<=5;$i++){
 
@@ -54,7 +50,7 @@ class PromotionFixtures extends  Fixture implements DependentFixtureInterface
                         ->setDateFinProvisoire($fake->dateTimeBetween(+1))
                         ->setDateFinReelle($fake->dateTimeBetween(+1.5))
                         ->setDateDebut($fake->dateTimeBetween(+1))
-                        ->addFormateur($tabFormateur);
+                        ->addFormateur($fake->unique(true)->randomElement($tabFORMATEURS));
                     $groupePrincipale=new Groupe();
                     $groupePrincipale->setNom('Groupe Principale '.$i)
                         ->setStatus($fake->randomElement(['encours','ferme','attente']))

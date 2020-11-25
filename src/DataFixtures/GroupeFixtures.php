@@ -60,7 +60,7 @@ class GroupeFixtures extends Fixture implements DependentFixtureInterface
                    /* $groupe->addApprenant($this->getReference(UserFixtures::addApprenantGroupe($k %25)));
                     $groupe->addFormateur($this->getReference(UserFixtures::addFormateurGroupe($k %1)));*/
 
-                    for ($i=1;$i<=25;$i++){
+                    for ($ap=1;$ap<=26;$ap++){
 
                         $groupe->addApprenant($fake->unique(true)->randomElement($tabApp));
                     }
