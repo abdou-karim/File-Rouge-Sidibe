@@ -56,3 +56,15 @@ V
 &src/DataFixtures/PromotionFixtures.php,9/b/9b43a59c65132d8804b4b6f9cba5eabb754f82e4
 S
 #src/DataFixtures/GroupeFixtures.php,6/6/66b7589310eb734d573c3a2f31d161676e4c8e0c
+E
+src/Entity/Groupe.php,7/2/72c4e15af538be4279c81730409283b04819a947
+V
+&src/Repository/PromotionRepository.php,c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726
+Z
+*src/Controller/ProfilSortiesController.php,c/c/cc6015ebf5d0cd809dd1fb54873ad2ac99313f20
+P
+ src/Entity/GroupeCompetences.php,f/e/fe25c1878e3c8f904f51b724639e3d6b9fcc4100
+J
+src/Entity/Competences.php,d/6/d6053831683ee2d9869c8190290c61edd4df1033
+E
+src/Entity/Niveau.php,d/4/d44638963307a58769a5fafb1b56e365de710995

@@ -26,9 +26,11 @@ class ProfilSortiesController extends AbstractController
  */
 public function getApprenantsProfilSorties(int $idpromo){
 
-    $apprenat=$this->promotionRepository->getApprenantByProfilSorties($idpromo);
+    $apprenat[]=$this->promotionRepository->getApprenantByProfilSorties($idpromo);
 
-  return $this->json($apprenat,200);
+
+  return $this->json(array_unique($apprenat),200);
+
 }
 
 /**
@@ -40,7 +42,9 @@ public function getApprenantsProfilSorties(int $idpromo){
  */
  public function getApprenantOnePromoOneProfilSortie(int $idpromo,int $idprofilSortie)
  {
-     $apprenant=$this->promotionRepository->getApprenantsByPromoByOneProfilSortie($idpromo,$idprofilSortie);
-   return $this->json($apprenant,200);
+     $apprenant[]=$this->promotionRepository->getApprenantsByPromoByOneProfilSortie($idpromo,$idprofilSortie);
+
+   return $this->json(array_unique($apprenant),200);
  }
+
 }

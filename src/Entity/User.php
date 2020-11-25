@@ -58,7 +58,7 @@ class User implements UserInterface
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"getApprenantsByPs"})
+     * @Groups({"user:read"})
      */
     private $id;
 
@@ -66,7 +66,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
-     * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      */
     private $username;
@@ -85,7 +84,6 @@ class User implements UserInterface
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
      * @Assert\NotBlank
-     * @Groups({"getApprenantsByPs"})
      */
     private $fisrtname;
 
@@ -94,7 +92,6 @@ class User implements UserInterface
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
      * @Assert\NotBlank
-     * @Groups({"getApprenantsByPs"})
      */
     private $lastname;
 
@@ -102,7 +99,6 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
-     * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas valide"
@@ -112,9 +108,8 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="blob", nullable=true)
-     * @Groups({"user:read", "user:write"})
+     * Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
-     * @Groups({"getApprenantsByPs"})
      */
     private $photo;
 
