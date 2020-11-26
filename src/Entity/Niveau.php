@@ -2,11 +2,14 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\NiveauRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=NiveauRepository::class)
+ * @ApiResource()
  */
 class Niveau
 {
@@ -14,26 +17,30 @@ class Niveau
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"competence:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:read","competence:write"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:read","competence:write"})
      */
     private $crictereDevaluation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:read","competence:write"})
      */
     private $groupeDaction;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Competences::class, inversedBy="niveaux")
+     * @ORM\ManyToOne(targetEntity=Competences::class, inversedBy="niveaux",cascade = { "persist" })
      */
     private $competence;
 

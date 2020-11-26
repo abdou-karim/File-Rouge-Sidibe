@@ -2,13 +2,25 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\GroupeCompetencesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=GroupeCompetencesRepository::class)
+ * @ApiResource(
+ *     routePrefix="/admin",
+ *     normalizationContext={"groups"={"GroupeCompetences:read"}},
+ *     denormalizationContext={"groups"={"GroupeCompetences:write"}},
+ *       attributes={
+ *              "pagination_enabled"=true,
+ *              "pagination_items_per_page"=3
+ *     },
+ * )
  */
 class GroupeCompetences
 {
@@ -16,27 +28,40 @@ class GroupeCompetences
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @group({"GroupeCompetences:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
      */
     private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity=Competences::class, inversedBy="groupeCompetences")
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @ApiSubresource
      */
     private $competence;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="groupeCompetence")
+     */
+    private $tags;
 
     public function __construct()
     {
         $this->competence = new ArrayCollection();
+        $this->tags = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -88,6 +113,33 @@ class GroupeCompetences
     public function removeCompetence(Competences $competence): self
     {
         $this->competence->removeElement($competence);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Tag[]
+     */
+    public function getTags(): Collection
+    {
+        return $this->tags;
+    }
+
+    public function addTag(Tag $tag): self
+    {
+        if (!$this->tags->contains($tag)) {
+            $this->tags[] = $tag;
+            $tag->addGroupeCompetence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTag(Tag $tag): self
+    {
+        if ($this->tags->removeElement($tag)) {
+            $tag->removeGroupeCompetence($this);
+        }
 
         return $this;
     }

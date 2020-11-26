@@ -10,6 +10,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
+
 class UpdateUser
 {
     private $encoder;
@@ -32,17 +33,15 @@ class UpdateUser
         $this->serializer=$serializer;
         $this->validator=$validator;
         $this->em=$em;
-        $this->userRepository=$userRepository;
         $this->addUser=$addUser;
+        $this->userReposirory=$userRepository;
     }
-    public function ModifierUser(Request $request ,int $id){
+    public function ModifierUser(Request $request,int $id){
 
-        $user=$this->userRepository->find($id);
+        $user=$this->userReposirory->find($id);
         $requestAll = $request->request->all();
 
-
-
-        foreach ($requestAll as $key=>$value){
+       foreach ($requestAll as $key=>$value){
 
             if($key !=="_method" || !$value){
 
@@ -54,6 +53,7 @@ class UpdateUser
         $photoBlob = fopen($photo->getRealPath(),"rb");
 
         if($photo){
+
             $user->setPhoto($photoBlob);
         }
         $errors = $this->validator->validate($user);

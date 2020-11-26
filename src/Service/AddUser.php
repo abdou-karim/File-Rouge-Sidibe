@@ -49,7 +49,7 @@ class AddUser
         foreach ($profilAll as $value) {
 
             $user = $request->request->all();
-            $profilSortie=$user['profilSortie'];
+
 
             $photo = $request->files->get("photo");
             $iriProfil = $this->iriConverter->getItemFromIri($user['profils'])->getLibelle();
@@ -69,7 +69,7 @@ class AddUser
             } elseif($iriProfil===$value="Apprenant") {
 
                 $user = $this->serializer->denormalize($user, "App\Entity\Apprenants", true);
-                $user->setProfilSortie($this->iriConverter->getItemFromIri($profilSortie));
+                $user->setProfilSortie($this->iriConverter->getItemFromIri($user['profilSortie']));
             }
 
 

@@ -68,3 +68,11 @@ J
 src/Entity/Competences.php,d/6/d6053831683ee2d9869c8190290c61edd4df1033
 E
 src/Entity/Niveau.php,d/4/d44638963307a58769a5fafb1b56e365de710995
+^
+.src/DataFixtures/GroupeCompetencesFixtures.php,5/5/55b6c9c91f995802f7d769037782938e922fc9b0
+X
+(src/DataFixtures/CompetencesFixtures.php,3/4/34649dfd43ffc12b2db28393837a99097909b01d
+G
+src/Service/AddUser.php,3/f/3f3dce81763c468700c69cea72a68abf5387565f
+J
+src/Service/UpdateUser.php,5/2/521402bc4785b8e779cf4464ae9eb7669d6a0cfb

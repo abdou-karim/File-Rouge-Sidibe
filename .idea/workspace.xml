@@ -2,16 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b22643e4-9f50-4fc3-83ad-a053fdb8ef80" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/1283891c5be932905a7efc9cc2b76812791bf0e6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/1283891c5be932905a7efc9cc2b76812791bf0e6" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87b99206717ccce222f05190f36b6273e3ea6228" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87b99206717ccce222f05190f36b6273e3ea6228" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b43a59c65132d8804b4b6f9cba5eabb754f82e4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b43a59c65132d8804b4b6f9cba5eabb754f82e4" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProfilSortiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfilSortiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PromotionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PromotionRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +165,8 @@
       <workItem from="1606151798789" duration="17630000" />
       <workItem from="1606204884561" duration="38508000" />
       <workItem from="1606253341968" duration="2214000" />
-      <workItem from="1606291046680" duration="4804000" />
+      <workItem from="1606291046680" duration="25334000" />
+      <workItem from="1606339611482" duration="2856000" />
     </task>
     <servers />
   </component>
@@ -191,10 +188,14 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="267" y="27" key="#PHP/72.27.1848.1053@72.27.1848.1053" timestamp="1605864027307" />
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser" timestamp="1606227151880">
+    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606318362605">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606227151880" />
+    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1606318362605" />
+    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser" timestamp="1606299818263">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606299818263" />
     <state x="72" y="27" width="870" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605710350910">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

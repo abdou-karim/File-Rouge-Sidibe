@@ -2,13 +2,24 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\CompetencesRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=CompetencesRepository::class)
+ * @ApiResource (
+ *     normalizationContext={"groups"={"competence:read"}},
+ *     denormalizationContext={"groups"={"competence:write"}},
+ *       attributes={
+ *              "pagination_enabled"=true,
+ *              "pagination_items_per_page"=3
+ *     },
+ * )
  */
 class Competences
 {
@@ -16,26 +27,35 @@ class Competences
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"competence:read","GroupeCompetences:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:read","competence:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"competence:read","competence:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
      */
     private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity=GroupeCompetences::class, mappedBy="competence")
+     * @Groups({"competence:write"})
      */
     private $groupeCompetences;
 
+
     /**
-     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence")
+     * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence",cascade = { "persist" })
+     * @Groups({"competence:read","competence:write"})
+     * @ApiSubresource()
      */
     private $niveaux;
 

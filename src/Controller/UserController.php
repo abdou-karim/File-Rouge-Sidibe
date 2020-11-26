@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use App\Service\AddUser;
 use App\Service\UpdateUser;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,16 +14,18 @@ class UserController extends AbstractController
 
     private $updateUser;
     private $addUser;
-
+    private $userRepository;
     public function __construct(
         AddUser $addUser,
         UpdateUser $updateUser
+
 
 )
     {
 
         $this->addUser=$addUser;
         $this->updateUser=$updateUser;
+       // $this->userRepo=$userRepository;
     }
 
     /**
@@ -66,7 +69,7 @@ class UserController extends AbstractController
      *     methods={"PUT"},
      * ),
     */
-    public function UpdateUser(Request $request ,int $id){
+    public function UpdateUser(Request $request,int $id){
 
     return $this->updateUser->ModifierUser($request,$id);
     }

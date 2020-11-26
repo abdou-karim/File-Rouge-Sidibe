@@ -2,6 +2,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\GroupeCompetences;
+use App\Repository\TagRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -10,15 +11,26 @@ use Faker\Factory;
 
 class GroupeCompetencesFixtures extends Fixture implements DependentFixtureInterface
 {
-
+    private $tagRepository;
+public function __construct(TagRepository $tagRepository){
+    $this->tagRepository=$tagRepository;
+}
 
     public function load(ObjectManager $manager)
     {
         $fake = Factory::create('fr-FR');
 
+        $tabTa=$this->tagRepository->findAll();
+
+        foreach ($tabTa as $tabTag){
+            $tabTAG[]=$tabTag;
+        }
+
         for ($g=1;$g<=13;$g++){
             $competence[]=$this->getReference(CompetencesFixtures::getReferenceKey($g));
+
         }
+
 
         for ($i=1;$i<=4;$i++){
 
@@ -30,6 +42,9 @@ class GroupeCompetencesFixtures extends Fixture implements DependentFixtureInter
                 $groupeCompetences->addCompetence($fake->unique(true)->randomElement($competence));
 
             }
+            for ($t=1;$t<=4;$t++){
+                $groupeCompetences->addTag($fake->unique(true)->randomElement($tabTAG));
+            }
                $manager->persist($groupeCompetences);
             $manager->flush();
         }
@@ -40,6 +55,7 @@ class GroupeCompetencesFixtures extends Fixture implements DependentFixtureInter
       return  array(
 
           CompetencesFixtures::class,
+          TagFixtures::class
       );
     }
 }
