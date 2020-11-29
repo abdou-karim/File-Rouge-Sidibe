@@ -2,12 +2,22 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b22643e4-9f50-4fc3-83ad-a053fdb8ef80" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3f3dce81763c468700c69cea72a68abf5387565f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3f3dce81763c468700c69cea72a68abf5387565f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55b6c9c91f995802f7d769037782938e922fc9b0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55b6c9c91f995802f7d769037782938e922fc9b0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87b99206717ccce222f05190f36b6273e3ea6228" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87b99206717ccce222f05190f36b6273e3ea6228" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b43a59c65132d8804b4b6f9cba5eabb754f82e4" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/b/9b43a59c65132d8804b4b6f9cba5eabb754f82e4" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6053831683ee2d9869c8190290c61edd4df1033" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6053831683ee2d9869c8190290c61edd4df1033" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProfilSortiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfilSortiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/CompetencesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/CompetencesFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Niveau.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Niveau.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/CompetencesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CompetencesRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/AddUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/AddUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/UpdateUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UpdateUser.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +31,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="hiddenUrls">
+      <set>
+        <option value="https://github.com/abdou-karim/File-Rouge-Sidibe" />
+      </set>
+    </option>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -120,12 +137,15 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1kN0ZVCMGmL99lKJQOG1tfSuJVX" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
@@ -135,7 +155,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
+    <property name="php.override.implement.member.chooser.php.doc" value="INHERIT" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -167,6 +187,11 @@
       <workItem from="1606253341968" duration="2214000" />
       <workItem from="1606291046680" duration="25334000" />
       <workItem from="1606339611482" duration="2856000" />
+      <workItem from="1606377922691" duration="27882000" />
+      <workItem from="1606430136443" duration="11852000" />
+      <workItem from="1606503847272" duration="8807000" />
+      <workItem from="1606557602162" duration="20142000" />
+      <workItem from="1606606610294" duration="4903000" />
     </task>
     <servers />
   </component>
@@ -188,14 +213,15 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="267" y="27" key="#PHP/72.27.1848.1053@72.27.1848.1053" timestamp="1605864027307" />
-    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606318362605">
+    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606599504888">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1606318362605" />
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser" timestamp="1606299818263">
+    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1606599504888" />
+    <state x="781" y="225" width="411" height="646" key="#com.intellij.ide.util.MemberChooser" timestamp="1606468999456">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606299818263" />
+    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606468999456" />
+    <state x="1920" y="225" width="411" height="646" key="#com.intellij.ide.util.MemberChooser/72.27.3768.1053@72.27.3768.1053" timestamp="1606418552066" />
     <state x="72" y="27" width="870" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605710350910">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -204,6 +230,26 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="172" y="127" width="1648" height="853" key="DiffContextDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1605876406161" />
+    <state width="1240" height="258" key="GridCell.Tab.0.bottom" timestamp="1606599793225">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1240" height="258" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1606599793225" />
+    <state width="1240" height="258" key="GridCell.Tab.0.center" timestamp="1606599793222">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1240" height="258" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1606599793222" />
+    <state width="1240" height="258" key="GridCell.Tab.0.left" timestamp="1606599793221">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1240" height="258" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1606599793221" />
+    <state width="1240" height="258" key="GridCell.Tab.0.right" timestamp="1606599793224">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="1240" height="258" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1606599793224" />
+    <state width="263" height="541" key="HiddenNamespacesPopup" timestamp="1606600083079">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state width="263" height="541" key="HiddenNamespacesPopup/72.27.1848.1053@72.27.1848.1053" timestamp="1606600083079" />
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1606121581895">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
@@ -216,9 +262,21 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="591" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1605715065696" />
+    <state x="776" y="468" width="439" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606599817909">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="776" y="468" width="439" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/72.27.1848.1053@72.27.1848.1053" timestamp="1606599817909" />
+    <state x="709" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog" timestamp="1606393322996">
+      <screen x="72" y="27" width="1848" height="1053" />
+    </state>
+    <state x="709" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1606393322996" />
     <state x="660" y="252" key="run.anything.popup" timestamp="1605638614657">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state x="660" y="252" key="run.anything.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1605638614657" />
+    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1606508733717">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606508733717" />
   </component>
 </project>

@@ -50,7 +50,7 @@ class AddUser
 
             $user = $request->request->all();
 
-
+            
             $photo = $request->files->get("photo");
             $iriProfil = $this->iriConverter->getItemFromIri($user['profils'])->getLibelle();
 

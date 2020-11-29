@@ -1,7 +1,7 @@
 <?php
 namespace App\DataFixtures;
 
-use App\Entity\Competences;
+use dApp\Entity\Competences;
 use App\Entity\Niveau;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 

@@ -41,6 +41,7 @@ class UpdateUser
         $user=$this->userReposirory->find($id);
         $requestAll = $request->request->all();
 
+
        foreach ($requestAll as $key=>$value){
 
             if($key !=="_method" || !$value){

@@ -24,12 +24,14 @@ class Niveau
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence:read","competence:write"})
+     * @groups({"GroupeCompetences:write"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence:read","competence:write"})
+     * @Groups({"GroupeCompetences:write"})
      */
     private $crictereDevaluation;
 

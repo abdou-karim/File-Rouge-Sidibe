@@ -47,7 +47,7 @@ class GroupeCompetences
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Competences::class, inversedBy="groupeCompetences")
+     * @ORM\ManyToMany(targetEntity=Competences::class, inversedBy="groupeCompetences",cascade = { "persist" })
      * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
      * @ApiSubresource
      */
@@ -55,6 +55,7 @@ class GroupeCompetences
 
     /**
      * @ORM\ManyToMany(targetEntity=Tag::class, mappedBy="groupeCompetence")
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
      */
     private $tags;
 

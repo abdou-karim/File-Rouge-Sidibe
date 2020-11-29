@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Competences;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * @method Competences|null find($id, $lockMode = null, $lockVersion = null)
@@ -47,4 +48,18 @@ class CompetencesRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function VerifieCompetence($libelle){
+
+        $query=$this
+            ->createQueryBuilder('c')
+            ->select('c')
+            ->andWhere('c.libelle=:libelle')
+            ->setParameter('libelle',$libelle)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+
+        return $query;
+
+  }
 }

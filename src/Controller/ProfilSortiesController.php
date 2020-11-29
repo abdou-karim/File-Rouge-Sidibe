@@ -42,7 +42,7 @@ public function getApprenantsProfilSorties(int $idpromo){
  */
  public function getApprenantOnePromoOneProfilSortie(int $idpromo,int $idprofilSortie)
  {
-     $apprenant[]=$this->promotionRepository->getApprenantsByPromoByOneProfilSortie($idpromo,$idprofilSortie);
+     $apprenant[]=$this->promotionRepository->getApprenantsByPromoByOneProfilSortie($idpromo,$idprofilSortie    );
 
    return $this->json(array_unique($apprenant),200);
  }

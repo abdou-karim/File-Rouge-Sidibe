@@ -9,6 +9,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CompetencesRepository::class)
@@ -46,7 +47,7 @@ class Competences
     private $description;
 
     /**
-     * @ORM\ManyToMany(targetEntity=GroupeCompetences::class, mappedBy="competence")
+     * @ORM\ManyToMany(targetEntity=GroupeCompetences::class, mappedBy="competence",cascade = { "persist" })
      * @Groups({"competence:write"})
      */
     private $groupeCompetences;
@@ -55,6 +56,8 @@ class Competences
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence",cascade = { "persist" })
      * @Groups({"competence:read","competence:write"})
+     * @groups({"GroupeCompetences:write"})
+     * @Assert\Count(min="3",max="3",exactMessage="boy bayil ligay def")
      * @ApiSubresource()
      */
     private $niveaux;
