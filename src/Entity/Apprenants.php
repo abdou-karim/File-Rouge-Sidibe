@@ -171,4 +171,11 @@ class Apprenants extends User
         return $this;
     }
 
+    public function getUsername(): string
+    {
+        return strtoupper(parent::getUsername());
+    }
+
+
+
 }

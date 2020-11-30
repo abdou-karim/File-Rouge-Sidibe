@@ -92,3 +92,7 @@ X
 -src/Controller/GroupeCompetenceController.php,4/d/4dfc8200f9ee99d2cf983d626f2573dac1a5e166
 Y
 )src/Repository/ProfilSortieRepository.php,a/4/a46df5ebee113a6ef4328e3a131bc045764095e2
+^
+.src/Repository/GroupeCompetencesRepository.php,8/d/8d87e2aefb075409951601c403daf1e02da11901
+]
+-src/Security/Voter/GroupeCompetencesVoter.php,d/f/dfc667031767b2ab90930f4dabf18b5ebc2e9fba

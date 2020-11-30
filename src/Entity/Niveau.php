@@ -38,6 +38,7 @@ class Niveau
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence:read","competence:write"})
+     * @groups({"GroupeCompetences:write"})
      */
     private $groupeDaction;
 

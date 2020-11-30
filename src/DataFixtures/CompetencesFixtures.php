@@ -1,7 +1,7 @@
 <?php
 namespace App\DataFixtures;
 
-use dApp\Entity\Competences;
+use App\Entity\Competences;
 use App\Entity\Niveau;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 
@@ -17,7 +17,7 @@ class CompetencesFixtures extends Fixture
     {
         $fake = Factory::create('fr-FR');
 
-        for ($i=1;$i<=13;$i++){
+        for ($i=1;$i<=30;$i++){
             $competence=new Competences();
             $competence->setLibelle('libelle_'.$i)
                 ->setDescription($fake->text);

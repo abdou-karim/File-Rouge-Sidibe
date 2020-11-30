@@ -3,21 +3,20 @@
   <component name="ChangeListManager">
     <list default="true" id="b22643e4-9f50-4fc3-83ad-a053fdb8ef80" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3f3dce81763c468700c69cea72a68abf5387565f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3f3dce81763c468700c69cea72a68abf5387565f" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55b6c9c91f995802f7d769037782938e922fc9b0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55b6c9c91f995802f7d769037782938e922fc9b0" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87b99206717ccce222f05190f36b6273e3ea6228" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/7/87b99206717ccce222f05190f36b6273e3ea6228" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4dfc8200f9ee99d2cf983d626f2573dac1a5e166" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4dfc8200f9ee99d2cf983d626f2573dac1a5e166" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bd6f44391d53418972ba37d3f1cb1397701823b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bd6f44391d53418972ba37d3f1cb1397701823b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6053831683ee2d9869c8190290c61edd4df1033" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6053831683ee2d9869c8190290c61edd4df1033" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ProfilSortiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProfilSortiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/GroupeCompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GroupeCompetenceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/CompetencesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/CompetencesFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/GroupeCompetencesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/GroupeCompetencesFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Apprenants.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenants.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Niveau.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Niveau.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/CompetencesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CompetencesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/AddUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/AddUser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/UpdateUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UpdateUser.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,7 +190,11 @@
       <workItem from="1606430136443" duration="11852000" />
       <workItem from="1606503847272" duration="8807000" />
       <workItem from="1606557602162" duration="20142000" />
-      <workItem from="1606606610294" duration="4903000" />
+      <workItem from="1606606610294" duration="5054000" />
+      <workItem from="1606643541563" duration="1702000" />
+      <workItem from="1606677991760" duration="1972000" />
+      <workItem from="1606728843300" duration="18275000" />
+      <workItem from="1606773881212" duration="3207000" />
     </task>
     <servers />
   </component>
@@ -250,6 +253,10 @@
       <screen x="72" y="27" width="1848" height="1053" />
     </state>
     <state width="263" height="541" key="HiddenNamespacesPopup/72.27.1848.1053@72.27.1848.1053" timestamp="1606600083079" />
+    <state x="2431" y="243" width="887" height="600" key="NewPhpClassDialog" timestamp="1606764542427">
+      <screen x="72" y="27" width="3768" height="1053" />
+    </state>
+    <state x="2431" y="243" width="887" height="600" key="NewPhpClassDialog/72.27.3768.1053@72.27.3768.1053" timestamp="1606764542427" />
     <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1606121581895">
       <screen x="72" y="27" width="1848" height="1053" />
     </state>

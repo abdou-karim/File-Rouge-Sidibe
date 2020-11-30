@@ -56,7 +56,7 @@ class CompetencesRepository extends ServiceEntityRepository
             ->andWhere('c.libelle=:libelle')
             ->setParameter('libelle',$libelle)
             ->getQuery()
-            ->getOneOrNullResult()
+            ->getResult()
             ;
 
         return $query;

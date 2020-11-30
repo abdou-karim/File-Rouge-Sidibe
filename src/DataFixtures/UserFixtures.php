@@ -71,7 +71,7 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                         ->setLastname($fake->lastName)
                         ->setEmail($fake->email)
                         ->setArchivage(false);
-                   // $photo = fopen($fake->imageUrl($width = 640, $height = 480),'rb');
+                    //$photo = fopen($fake->imageUrl($width = 640, $height = 480),'rb');
                     $photo = $fake->imageUrl($width = 640, $height = 480);
                     $user->setPhoto($photo);
                     $password = $this->encode->encodePassword ($user, 'Sidibe123' );

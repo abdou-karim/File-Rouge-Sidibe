@@ -26,13 +26,13 @@ public function __construct(TagRepository $tagRepository){
             $tabTAG[]=$tabTag;
         }
 
-        for ($g=1;$g<=13;$g++){
+        for ($g=1;$g<=30;$g++){
             $competence[]=$this->getReference(CompetencesFixtures::getReferenceKey($g));
 
         }
 
 
-        for ($i=1;$i<=4;$i++){
+        for ($i=1;$i<=6;$i++){
 
             $groupeCompetences=new GroupeCompetences();
             $groupeCompetences->setLibelle($fake->realText($maxNBChars = 50, $indexSize = 2 ))
@@ -42,7 +42,7 @@ public function __construct(TagRepository $tagRepository){
                 $groupeCompetences->addCompetence($fake->unique(true)->randomElement($competence));
 
             }
-            for ($t=1;$t<=4;$t++){
+            for ($t=1;$t<=5;$t++){
                 $groupeCompetences->addTag($fake->unique(true)->randomElement($tabTAG));
             }
                $manager->persist($groupeCompetences);

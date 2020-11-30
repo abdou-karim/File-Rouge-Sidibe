@@ -16,6 +16,17 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     routePrefix="/admin",
  *     normalizationContext={"groups"={"GroupeCompetences:read"}},
  *     denormalizationContext={"groups"={"GroupeCompetences:write"}},
+ *     collectionOperations={
+ *                   "GET",
+ *                   "POST",
+ *     },
+ *     itemOperations={
+ *            "GET"={
+ *     "path"="/groupe_competences/{id}/competences",
+ *     "security" = "is_granted('GROUPE_COMPETENCE_READ', object)"},
+ *     "GET"={"path"="/groupe_competences/{id}",
+ *     "security" = "is_granted('GROUPE_COMPETENCE_READ', object)"},
+ *     },
  *       attributes={
  *              "pagination_enabled"=true,
  *              "pagination_items_per_page"=3
