@@ -20,6 +20,7 @@ class CompetencesFixtures extends Fixture
         for ($i=1;$i<=30;$i++){
             $competence=new Competences();
             $competence->setLibelle('libelle_'.$i)
+                ->setArchivage(false)
                 ->setDescription($fake->text);
             $this->addReference(self::getReferenceKey($i),$competence);
             $manager->persist($competence);

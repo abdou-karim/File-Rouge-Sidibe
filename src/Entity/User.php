@@ -13,33 +13,43 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ApiResource(
+ *     routePrefix="/admin",
  *       collectionOperations={
+ *
  *          "get_admin_users"={
  *               "method"="GET",
- *               "path"="/admin/users",
- *              "security"= "is_granted('ROLE_Administrateur')",
- *                  "security_message"="Acces non autorisé",
+ *               "path"="/users",
+ *           "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager')",
+ *
  *          },
  *     "POST"={
- *        "path"="/admin/users",
+ *        "path"="/users",
  *     },
  *     },
  *       attributes={
- *              "pagination_enabled"=true
+ *              "pagination_enabled"=true,
+ *          "pagination_items_per_page"=10,
+ *     "security_message"="Acces non autorisé",
+ *     "security"= "is_granted('ROLE_Administrateur')",
+ *
  *     },
  *     itemOperations={
  *          "get_admin_users_id"={
  *               "method"="GET",
- *               "path"="/admin/users/{id}",
- *              "security"= "is_granted('ROLE_Administrateur')",
- *                  "security_message"="Acces non autorisé",
+ *               "path"="/users/{id}",
  *                   "defaults"={"id"=null},
+ *     "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager') or is_granted('ROLE_Apprenant')",
  *
  *          },
- *          "delete_user"={"method"="DELETE","path"="/admin/users/{id}","security_message"="Acces non autorisé",
- *     "security"= "is_granted('ROLE_Administrateur')"},
- *
+ *          "delete_user"={
+ *     "method"="DELETE","path"="/users/{id}",
+ *     "security"= "is_granted('ROLE_Administrateur')"
+ * },
+ *          "PUT"={
+ *          "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Apprenant')",
  *     },
+ *     },
+ *
  *
  *
  *     normalizationContext={"groups"={"user:read"}},
@@ -59,6 +69,10 @@ class User implements UserInterface
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"user:read"})
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "promoDeleteAddApprenant:write"
+     * })
      */
     private $id;
 
@@ -66,6 +80,10 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",*
+     *     "promoDeleteAddApprenant:write"
+     * })
      * @Assert\NotBlank
      */
     private $username;
@@ -83,6 +101,10 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "promoDeleteAddApprenant:write"
+     *     })
      * @Assert\NotBlank
      */
     private $fisrtname;
@@ -90,7 +112,11 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
-     * @Groups({"profil:read","profilSortie:read"})
+     * @Groups({"profil:read","profilSortie:read"})*
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "promoDeleteAddApprenant:write"
+     *     })
      * @Assert\NotBlank
      */
     private $lastname;
@@ -99,6 +125,10 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "promoDeleteAddApprenant:write"
+     *     })
      * @Assert\NotBlank
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas valide"
@@ -110,13 +140,17 @@ class User implements UserInterface
      * @ORM\Column(type="blob", nullable=true)
      * Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read"
+     * ,"promoDeleteAddApprenant:write"
+     *     })
      */
     private $photo;
 
     /**
      * @ORM\Column(type="boolean", options={"default":false})
      * @Groups({"user:read", "user:write"})
-     * @Groups({"profil:read"})
+     * @Groups({"profil:read","promoDeleteAddApprenant:write"})
      */
     private $archivage;
 

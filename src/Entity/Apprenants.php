@@ -58,12 +58,20 @@ class Apprenants extends User
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
      * @Assert\NotBlank
      * @Groups({"getApprenantsByPs"})
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write",
+     *     "promoGrApRefAp:read","promoDeleteAddApprenant:write"
+     * })
      */
     private $genre;
 
     /**
      * @ORM\Column(type="text")
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     * "promoDeleteAddApprenant:write"
+     *     })
      * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      */
@@ -72,6 +80,10 @@ class Apprenants extends User
     /**
      * @ORM\Column(type="string", length=50)
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
+     *     "grPrincipal:read","promo_app_attente:read","post_promo:write",
+     *     "promoGrApRefAp:read","promoDeleteAddApprenant:write"
+     * })
      * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      */
@@ -79,6 +91,7 @@ class Apprenants extends User
 
     /**
      * @ORM\ManyToOne(targetEntity=ProfilSortie::class, inversedBy="apprenants")
+     * @Groups({"groupe:read","groupe:write"})
      * @ORM\JoinColumn(nullable=false)
      * @ApiSubresource()
      *
@@ -89,6 +102,18 @@ class Apprenants extends User
      * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="apprenants")
      */
     private $groupes;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Groups ({"promo_app_attente:read","post_promo:write"})
+     */
+    private $statut;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="apprenants")
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $promotion;
 
     public function __construct()
     {
@@ -174,6 +199,30 @@ class Apprenants extends User
     public function getUsername(): string
     {
         return strtoupper(parent::getUsername());
+    }
+
+    public function getStatut(): ?string
+    {
+        return $this->statut;
+    }
+
+    public function setStatut(string $statut): self
+    {
+        $this->statut = $statut;
+
+        return $this;
+    }
+
+    public function getPromotion(): ?Promotion
+    {
+        return $this->promotion;
+    }
+
+    public function setPromotion(?Promotion $promotion): self
+    {
+        $this->promotion = $promotion;
+
+        return $this;
     }
 
 

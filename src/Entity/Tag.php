@@ -37,7 +37,7 @@ class Tag
     private $descriptif;
 
     /**
-     * @ORM\ManyToMany(targetEntity=GroupeCompetences::class, inversedBy="tags")
+     * @ORM\ManyToMany(targetEntity=GroupeCompetences::class, inversedBy="tags",cascade = { "persist" })
      */
     private $groupeCompetence;
 

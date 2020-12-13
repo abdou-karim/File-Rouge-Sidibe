@@ -10,7 +10,7 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class PromotionFixtures extends  Fixture implements DependentFixtureInterface
+class PromotionFixtures extends  Fixture
 {
     private $apprenantsRepository;
     private $formateursRepository;
@@ -30,12 +30,8 @@ class PromotionFixtures extends  Fixture implements DependentFixtureInterface
         $tabApp=$this->apprenantsRepository->findAll();
         $tabForm=$this->formateursRepository->findAll();
 
-        foreach ($tabApp as $tabApprenant){
-            $tabAPPRENANTS[]=$tabApprenant;
-        }
-        foreach ($tabForm as $tabFormateur){
-            $tabFORMATEURS[]=$tabFormateur;
-        }
+
+
 
 
                 for ($i=0;$i<=5;$i++){
@@ -49,21 +45,35 @@ class PromotionFixtures extends  Fixture implements DependentFixtureInterface
                         ->setDescription($fake->text.$i)
                         ->setDateFinProvisoire($fake->dateTimeBetween(+1))
                         ->setDateFinReelle($fake->dateTimeBetween(+1.5))
-                        ->setDateDebut($fake->dateTimeBetween(+1))
-                        ->addFormateur($fake->unique(true)->randomElement($tabFORMATEURS));
+                        ->setDateDebut($fake->dateTimeBetween(+1));
+                          foreach ($tabForm as $tabFormateur){
+
+                              $promotion ->addFormateur($fake->unique(true)->randomElement($tabFormateur));
+                          }
+                    foreach ($tabApp as $tabApprenant){
+
+                        $promotion ->addApprenant($fake->unique(true)->randomElement($tabApprenant));
+                    }
+
+
+                    for ($l=1;$l<=1;$l++){
+
+                        $promotion->setReferentiel($this->getReference(ReferentielFixtures::getReferenceKey($i %1)));
+                    }
                     $groupePrincipale=new Groupe();
                     $groupePrincipale->setNom('Groupe Principale '.$i)
                         ->setStatus($fake->randomElement(['encours','ferme','attente']))
                     ->setTypeDeGroupe('Groupe Principale')
                         ->setDateCreation($fake->dateTimeBetween(+1))
+                        ->setArchivage(false)
                     ->setPromotion($promotion);
 
-                    for ($m=1, $iMax = count($tabAPPRENANTS); $m< $iMax; $m++){
-
-                        $groupePrincipale->addApprenant($fake->unique(true)->randomElement($tabAPPRENANTS));
+                    foreach ($tabApp as $tabApprenant){
+                        $groupePrincipale->addApprenant($fake->unique(true)->randomElement($tabApprenant));
                     }
-                    for ($h=1, $hMax = count($tabFORMATEURS); $h< $hMax; $h++){
-                        $groupePrincipale->addFormateur($fake->unique(true)->randomElement($tabFORMATEURS));
+
+                    foreach ($tabForm as $tabFormateur){
+                        $groupePrincipale->addFormateur($fake->unique(true)->randomElement($tabFormateur));
                     }
                     $manager->persist($promotion);
                     $manager->persist($groupePrincipale);
@@ -74,11 +84,5 @@ class PromotionFixtures extends  Fixture implements DependentFixtureInterface
 
     }
 
-    public function getDependencies()
-    {
-        return array(
-            UserFixtures::class,
 
-        );
-    }
 }

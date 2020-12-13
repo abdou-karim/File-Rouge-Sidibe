@@ -47,4 +47,22 @@ class ReferentielRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getCompetenceGroupeReferentiel($idRef,$idGp){
+        $query=$this->createQueryBuilder('r')
+            ->select('r,g')
+            ->andWhere('r.id=:idRef')
+            ->setParameter('idRef',$idRef)
+            ->leftJoin('r.groupeCompetence','g')
+            ->andWhere('g.id=:idGp')
+            ->setParameter('idGp',$idGp)
+            ->getQuery()
+            ->getResult()
+            ;
+
+        return $query;
+
+    }
+
+
 }

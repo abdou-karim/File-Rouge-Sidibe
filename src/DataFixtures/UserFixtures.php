@@ -33,7 +33,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
 
     {
         $fake = Factory::create('fr-FR');
-            for($i=0;$i<=3;$i++){
+
+          for($i=0;$i<=3;$i++){
 
                 $nbrUser=5;
                 $userProfil=$this->getReference(ProfilFixtures::getReferenceKey($i %4));
@@ -54,7 +55,16 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                         $user->setGenre($fake->randomElement(['homme','femme']))
                             ->setTelephone($fake->phoneNumber())
                             ->setAdresse($fake->address())
-                            ->setProfilSortie($this->getReference(ProfilSortieFixtures::getReferenceKey($b %8)));
+                            ->setProfilSortie($this->getReference(ProfilSortieFixtures::getReferenceKey($b %8)))
+                            ->setStatut($fake->randomElement(['actif','attente']));
+
+
+                            $user->setPromotion($this->getReference(PromotionFixtures::getReferenceKey($b %5)));
+
+
+
+
+
                         $this->addReference(self::addApprenantGroupe($b),$user);
 
                     }
@@ -86,6 +96,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
     {
         return array(
             ProfilFixtures::class,
+            PromotionFixtures::class
+
         );
     }
 

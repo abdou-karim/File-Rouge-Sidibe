@@ -17,19 +17,29 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     normalizationContext={"groups"={"GroupeCompetences:read"}},
  *     denormalizationContext={"groups"={"GroupeCompetences:write"}},
  *     collectionOperations={
- *                   "GET",
- *                   "POST",
+ *                   "GET"={
+ *                  "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager') or is_granted('ROLE_Apprenant')",
+ *     },
+ *                   "POST"={
+ *                  "security" = "is_granted('POST_VIEW', object)",
+ *     },
  *     },
  *     itemOperations={
+ *     "PUT",
+ *     "DELETE",
  *            "GET"={
  *     "path"="/groupe_competences/{id}/competences",
- *     "security" = "is_granted('GROUPE_COMPETENCE_READ', object)"},
- *     "GET"={"path"="/groupe_competences/{id}",
+ *     "security" = "is_granted('GROUPE_COMPETENCE_READ', object)"
+ * },
+ *
+ *     "GET"={
+ *     "path"="/groupe_competences/{id}",
  *     "security" = "is_granted('GROUPE_COMPETENCE_READ', object)"},
  *     },
  *       attributes={
  *              "pagination_enabled"=true,
- *              "pagination_items_per_page"=3
+ *              "pagination_items_per_page"=3,
+ *     "security"= "is_granted('ROLE_Administrateur')",
  *     },
  * )
  */
@@ -39,27 +49,32 @@ class GroupeCompetences
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @group({"GroupeCompetences:read"})
+     * @Groups({"referentielGet:read","referentielGetComptence:read","referentiel:read","GroupeCompetences:read",
+     *     "GroupeCompetences:write","RefGroupCompCom:read","referentiel:write"
+     *     })
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:write"})
-     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read",
+     *     "referentielGetComptence:read",
+     *     "referentielGet:read","referentiel:write","referentiel:read","competence:write"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:write"})
-     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read",
+     *     "referentielGetComptence:read",
+     *     "referentielGet:read","referentiel:write","referentiel:read","competence:write"})
      */
     private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity=Competences::class, inversedBy="groupeCompetences",cascade = { "persist" })
-     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read",
+     *     "referentielGet:read","referentiel:write","referentielGetComptence:read"})
      * @ApiSubresource
      */
     private $competence;
@@ -70,10 +85,21 @@ class GroupeCompetences
      */
     private $tags;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Referentiel::class, mappedBy="groupeCompetence")
+     */
+    private $referentiels;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $archivage;
+
     public function __construct()
     {
         $this->competence = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->referentiels = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -152,6 +178,45 @@ class GroupeCompetences
         if ($this->tags->removeElement($tag)) {
             $tag->removeGroupeCompetence($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Referentiel[]
+     */
+    public function getReferentiels(): Collection
+    {
+        return $this->referentiels;
+    }
+
+    public function addReferentiel(Referentiel $referentiel): self
+    {
+        if (!$this->referentiels->contains($referentiel)) {
+            $this->referentiels[] = $referentiel;
+            $referentiel->addGroupeCompetence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReferentiel(Referentiel $referentiel): self
+    {
+        if ($this->referentiels->removeElement($referentiel)) {
+            $referentiel->removeGroupeCompetence($this);
+        }
+
+        return $this;
+    }
+
+    public function getArchivage(): ?bool
+    {
+        return $this->archivage;
+    }
+
+    public function setArchivage(bool $archivage): self
+    {
+        $this->archivage = $archivage;
 
         return $this;
     }

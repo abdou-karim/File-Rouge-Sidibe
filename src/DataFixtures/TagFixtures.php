@@ -9,6 +9,7 @@ use Faker\Factory;
 class TagFixtures extends Fixture
 {
     public static function getReferenceKey($i){
+
         return sprintf('tag_%s',$i);
     }
 

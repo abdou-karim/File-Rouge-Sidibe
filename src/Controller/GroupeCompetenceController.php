@@ -14,7 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
-class GroupeCompetenceController extends AbstractController
+class GroupeCompetenceController
 {
     private $groupeCompetencesRepository;
     private $competencesRepository;
@@ -29,20 +29,18 @@ class GroupeCompetenceController extends AbstractController
         $this->validator=$validator;
     }
 
-   /**
-    * @Route(
-    * name="Modifier_groupeCompetence",
-    * path="/api/admin/groupe_competences/{id}",
-    * methods={"PUT"}
-*     )
-    */
+
    public function ModifierGroupeCompetence(Request $request,int $id){
 
+       //////////////////////////////////////////////
+       /// MODIFICATION DE GROUPE DE COMPETENCE
+       //////////////////////////////////////////////
        $repoGroupeCompetence=$this->groupeCompetencesRepository->find($id);
        $requestAll = json_decode($request->getContent(),true);
        $compte=0;
 
        if(isset($requestAll['libelle']) || isset($requestAll['description'])){
+
            $repoGroupeCompetence->setLibelle($requestAll['libelle'])
                ->setDescription($requestAll['description']);
            $this->entityManager->persist($repoGroupeCompetence);
@@ -53,26 +51,38 @@ class GroupeCompetenceController extends AbstractController
 
            for($i=0, $iMax = count($competence); $i< $iMax; $i++){
 
-               if (isset($competence[$i]) && $this->competencesRepository->VerifieCompetence($competence[$i]['libelle'])!==null){
+               if (isset($competence[$i]) && $this->competencesRepository->VerifieCompetence($competence[$i]['libelle'])!==null) {
 
-            $compte=1;
-                   //Debut affectation
+                   $compte = 1;
+                   ////////////////////////////////////////
+                   // Debut affectation
+                   /// //////////////////////////////////
 
 
-        $tabGroupe[]= $repoGroupeCompetence->addCompetence($this->competencesRepository->VerifieCompetence($competence[$i]['libelle']));
+                   $tabGroupe[] = $repoGroupeCompetence->addCompetence($this->competencesRepository->VerifieCompetence($competence[$i]['libelle']));
 
-           /* $this->entityManager->persist($repoGroupeCompetence);
-                 $this->entityManager->flush();*/
+                   ///////////////////////////////////////////
+                   /// DEBUT SUPPRESSION DE COMPETENCE
+                   //////////////////////////////////////
+                   if (isset($requestAll['action']) && $requestAll['action'] === "delete") {
 
-               //  return $this->json("Les Competences Sont affectés");
-                   //return $compte;
 
-                 //Fin affectation
+                       $tabGroupeRemove[] = $this->competencesRepository->VerifieCompetence($competence[$i]['libelle']);
+
+
+                       $compte = 3;
+                   }
+                   ///////////////////////////////////////////////
+                   //FIN SUPPRESSION DE COMPETENCES
+                   /////////////////////////////////////////////
+
 
                }else{
-                   //Debut Ajout
-                   /*$this->entityManager->persist($newCompetence);*/
-                   //Verification niveau pour chaque Competence
+
+                   //////////////////////////////////////////////
+                   /// DEBUT AJOUT DE COMPETENCE
+                   /////////////////////////////////////////////
+                   ///
                    if(isset($competence[$i]['niveaux']) && count($competence[$i]['niveaux'])===3){
 
                        for ($n=0, $nMax = count($competence[$i]['niveaux']); $n< $nMax; $n++){
@@ -86,31 +96,25 @@ class GroupeCompetenceController extends AbstractController
                                ->setGroupeDaction($competence[$i]['niveaux'][$n]['groupeDaction'])
                                ->setCrictereDevaluation($competence[$i]['niveaux'][$n]['crictereDevaluation'])
                                ->setCompetence($newCompetence);
-                          /* $repoGroupeCompetence->addCompetence($newCompetence);
-                           $this->entityManager->persist($niveau);
-                           $this->entityManager->persist($repoGroupeCompetence);*/
-
 
                        }
                        $compte=2;
-                            /*$this->entityManager->flush();*/
 
-                      // return $this->json("Les Competences Sont Ajoutés") ;
-                      // return $compte;
-                       //Les Comptence qui ont 3 niveaux
                    }
-                   elseif (count($competence[$i]['niveaux'])<3){
+                   elseif (isset($competence[$i]['niveaux']) && count($competence[$i]['niveaux'])>3){
 
-                       return $this->json($competence[$i]['libelle']." A moins de Trois Niveaux ");
+                       return $this->json($competence[$i]['libelle']." Plus de Trois Niveaux ");
                    }
                    else{
 
                        //Competence qui n'ont pas de niveau
 
-                       return $this->json("Plus de Trois Niveaux ");
+                       return $this->json("Moins de Trois Niveaux ajouter des niveaux");
                    }
 
-                   //Fin Ajout
+                   /////////////////////////////////////////////////////
+                   ///Fin Ajout
+                   ////////////////////////////////////////////////////
                }
 
            }
@@ -122,7 +126,7 @@ class GroupeCompetenceController extends AbstractController
                }
 
                $this->entityManager->flush();
-               dd($tabGroupe);
+
 
                return $this->json("Les Competences Sont affectés");
            }
@@ -142,6 +146,19 @@ class GroupeCompetenceController extends AbstractController
 
                return $this->json("Les Competences Sont Ajoutés");
            }
+         if($compte===3){
+              foreach ($tabGroupeRemove as $value){
+
+
+                   $repoGroupeCompetence->removeCompetence($value);
+                   $this->entityManager->persist($repoGroupeCompetence);
+                   $this->entityManager->flush();
+
+                   return $this->json("competence suprimmé");
+               }
+           }
+
+
 
    }
 

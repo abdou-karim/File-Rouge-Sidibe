@@ -16,52 +16,48 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
  * @ORM\Entity(repositoryClass=ProfilsRepository::class)
  * @ApiFilter(BooleanFilter::class,properties={"archivage"})
  *  @ApiResource(
- *
+ *          routePrefix="/admin",
  *     collectionOperations={
  *
  *          "get_admin_profils"={
  *                      "method"="GET",
- *                       "path"="/admin/profils",
- *                      "security"= "is_granted('ROLE_Administrateur')",
- *                        "security_message"="Acces non autorisé"
+ *                       "path"="/profils",
+ *
  *
  *     },
  *      "get_admin_profils_users"={
  *               "method"="GET",
- *               "path"="/admin/profils/{id}/users",
- *                  "security_message"="Acces non autorisé",
- *              "security"= "is_granted('ROLE_Administrateur')",
+ *               "path"="/profils/{id}/users",
+ *
  *          },
  *      "create_profil"={
  *               "method"="POST",
- *               "path"="/admin/profils",
- *              "security"= "is_granted('ROLE_Administrateur')",
- *                "security_message"="Acces non autorisé"
+ *               "path"="/profils",
+ *
  *          },
  *     },
  *     itemOperations={
  *               "get_admin_profils_id"={
  *               "method"="GET",
- *               "path"="/admin/profils/{id}",
- *              "security"= "is_granted('ROLE_Administrateur')",
- *                  "security_message"="Acces non autorisé"
+ *               "path"="/profils/{id}",
+ *
  *
  *          },
  *           "put_admin_profils_id"={
  *               "method"="PUT",
- *               "path"="/admin/profils/{id}",
- *              "security"= "is_granted('ROLE_Administrateur')",
- *                  "security_message"="Acces non autorisé"
+ *               "path"="/profils/{id}",
+ *
  *          },
  *              "delete_profil"={
  *               "method"="DELETE",
- *               "path"="/admin/profils/{id}",
- *                  "security"= "is_granted('ROLE_Administrateur')",
- *                  "security_message"="Acces non autorisé"
+ *               "path"="/profils/{id}",
+ *
  *          },
  *     },
  *     attributes={
- *              "pagination_enabled"=true
+ *              "pagination_enabled"=true,
+ *          "security"= "is_granted('ROLE_Administrateur')",
+ *                  "security_message"="Acces non autorisé"
  *     },
  *     normalizationContext={"groups"={"profils:read"}},
  *     denormalizationContext={"groups"={"profils:write"}}

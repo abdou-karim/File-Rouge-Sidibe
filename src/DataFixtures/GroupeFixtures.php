@@ -26,9 +26,12 @@ class GroupeFixtures extends Fixture implements DependentFixtureInterface
         $apprenantAll=$this->apprenantsRepository->findAll();
         $formateurAll=$this->formateursRepository->findAll();
 
-        foreach ($apprenantAll as $apprenant){
-            $tabApp[]=$apprenant;
-        }
+
+            for ($o=1;$o<=25;$o++){
+                $tabApp[]=$apprenantAll[$o];
+            }
+
+
 
         foreach ($formateurAll as $formt){
 
@@ -44,23 +47,15 @@ class GroupeFixtures extends Fixture implements DependentFixtureInterface
             $groupe->setStatus($fake->randomElement(['encours','ferme']))
                 ->setTypeDeGroupe($fake->randomElement(['binome','filerouge']))
                 ->setDateCreation($fake->dateTimeBetween(+1))
+                ->setArchivage(false)
                 ->setPromotion($item);
-        /*    for ($k=0;$k<100;$k++){
-
-                    $formateurs=  $this->getReference(UserFixtures::addFormateurGroupe($k %5));
-
-                $apprenants= $this->getReference(UserFixtures::addApprenantGroupe($k %100));
-            }*/
 
             for ($b=1;$b<=5;$b++){
 
 
                 $groupe->setNom('groupe'.$b);
 
-                   /* $groupe->addApprenant($this->getReference(UserFixtures::addApprenantGroupe($k %25)));
-                    $groupe->addFormateur($this->getReference(UserFixtures::addFormateurGroupe($k %1)));*/
-
-                    for ($ap=1;$ap<=26;$ap++){
+                    for ($ap=1;$ap<=25;$ap++){
 
                         $groupe->addApprenant($fake->unique(true)->randomElement($tabApp));
                     }

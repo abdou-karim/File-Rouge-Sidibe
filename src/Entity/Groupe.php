@@ -8,10 +8,48 @@ use App\Repository\GroupeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=GroupeRepository::class)
- * @ApiResource
+ * @ApiResource(
+ *     normalizationContext={"groups"={"groupe:read"}},
+ *     denormalizationContext={"groups"={"groupe:write"}},
+ *     routePrefix="/admin",
+ *      attributes={
+ *              "pagination_enabled"=true,
+ *              "pagination_items_per_page"=5,
+ *               "security"= "is_granted('ROLE_Administrateur') or is_granted('ROLE_Formateur') ",
+ *                "security_message"="Acces non autorisé"
+ *     },
+ *     collectionOperations={
+ *          "Get_Groupe_P_A_F"={
+ *              "method"="GET",
+ *           "path"="/groupes",
+ *     },
+ *     "Get_Groupe_apprenant"={
+ *            "method"="GET",
+ *              "path"="/groupes/apprenants",
+ *               "normalization_context"={"groups"={"groupeApprenant:read"}},
+ *
+ *     },
+ *                  "POST",
+ *     },
+ *     itemOperations={
+ *
+ *              "delete_apprenants"={
+ *              "path"="/groupes/{id}/apprenants/{ids}",
+ *              "method"="delete",
+
+ *     },
+ *     "PUT"={
+ *           "path"="/groupes/{id}",
+ *     },
+ *     "GET"={
+ *        "path"="/groupes/{id}"
+ *     },
+ *     },
+ * )
  */
 class Groupe
 {
@@ -19,44 +57,64 @@ class Groupe
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
+     *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
+     *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
      */
     private $nom;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
+     *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
      */
     private $dateCreation;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
+     *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
      */
     private $status;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
+     *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
      */
     private $typeDeGroupe;
 
     /**
      * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="groupes")
+     * @ApiSubresource
+     * @Groups({"groupe:read","groupe:write"})
      */
     private $promotion;
 
     /**
      * @ORM\ManyToMany(targetEntity=Apprenants::class, inversedBy="groupes")
+     * @Groups({"groupe:read","groupe:write",
+     *     "groupeApprenant:read","grPrincipal:read","promoGrApRefAp:read"})
      * @ApiSubresource()
      */
     private $apprenants;
 
     /**
      * @ORM\ManyToMany(targetEntity=Formateurs::class, inversedBy="groupes")
+     * @Groups({"groupe:read","groupe:write"})
      */
     private $formateurs;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $archivage;
 
     public function __construct()
     {
@@ -67,6 +125,12 @@ class Groupe
     public function getId(): ?int
     {
         return $this->id;
+    }
+    public function setId(string $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -173,6 +237,18 @@ class Groupe
     public function removeFormateur(Formateurs $formateur): self
     {
         $this->formateurs->removeElement($formateur);
+
+        return $this;
+    }
+
+    public function getArchivage(): ?bool
+    {
+        return $this->archivage;
+    }
+
+    public function setArchivage(bool $archivage): self
+    {
+        $this->archivage = $archivage;
 
         return $this;
     }

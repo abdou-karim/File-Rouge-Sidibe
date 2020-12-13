@@ -1,22 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="b22643e4-9f50-4fc3-83ad-a053fdb8ef80" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3f3dce81763c468700c69cea72a68abf5387565f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/f/3f3dce81763c468700c69cea72a68abf5387565f" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201130232614.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/migrations/Version20201130234202.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataFixtures/ReferentielFixtures.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataPersister/CompetenceDataPersister.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataPersister/GroupeCompetenceDataPersister.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataPersister/GroupeDataPersister.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataPersister/PromotionDataPersister.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataProvider/PromotionGetCollectionDataProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataProvider/PromotionGetItemDataProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataProvider/ReferentielGetItemDataProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Brief.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/BriefRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Service/AddFileService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/1283891c5be932905a7efc9cc2b76812791bf0e6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/1283891c5be932905a7efc9cc2b76812791bf0e6" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bc9ddd722023891fcc1ab0340d98ba433d0d274" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bc9ddd722023891fcc1ab0340d98ba433d0d274" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4dfc8200f9ee99d2cf983d626f2573dac1a5e166" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4dfc8200f9ee99d2cf983d626f2573dac1a5e166" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55b6c9c91f995802f7d769037782938e922fc9b0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55b6c9c91f995802f7d769037782938e922fc9b0" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/72c4e15af538be4279c81730409283b04819a947" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/72c4e15af538be4279c81730409283b04819a947" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bd6f44391d53418972ba37d3f1cb1397701823b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bd6f44391d53418972ba37d3f1cb1397701823b" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6053831683ee2d9869c8190290c61edd4df1033" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6053831683ee2d9869c8190290c61edd4df1033" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/eef176cedb90d8031c51d11e7e07a5ac3227b144" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/api_platform.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/GroupeCompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GroupeCompetenceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/CompetencesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/CompetencesFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/GroupeCompetencesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/GroupeCompetencesFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/GroupeFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/GroupeFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/PromotionFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/PromotionFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TagFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TagFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Apprenants.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Groupe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Groupe.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Niveau.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Niveau.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Profils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Promotion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Promotion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Referentiel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Referentiel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/CompetencesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CompetencesRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PromotionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PromotionRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ReferentielRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReferentielRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Security/Voter/GroupeCompetencesVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/Voter/GroupeCompetencesVoter.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/SetKeyValue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -133,6 +177,11 @@
       <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
       <path value="$PROJECT_DIR$/vendor/deployer/recipes" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/friendsofsymfony/rest-bundle" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/jsonp-callback-validator" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer" />
+      <path value="$PROJECT_DIR$/vendor/jms/serializer-bundle" />
+      <path value="$PROJECT_DIR$/vendor/jms/metadata" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kN0ZVCMGmL99lKJQOG1tfSuJVX" />
@@ -195,6 +244,29 @@
       <workItem from="1606677991760" duration="1972000" />
       <workItem from="1606728843300" duration="18275000" />
       <workItem from="1606773881212" duration="3207000" />
+      <workItem from="1606812239761" duration="1478000" />
+      <workItem from="1606813789161" duration="40513000" />
+      <workItem from="1606909856299" duration="21102000" />
+      <workItem from="1606942402355" duration="3763000" />
+      <workItem from="1606986973143" duration="28192000" />
+      <workItem from="1607025281900" duration="3697000" />
+      <workItem from="1607039145949" duration="5053000" />
+      <workItem from="1607067404431" duration="28156000" />
+      <workItem from="1607164759245" duration="14635000" />
+      <workItem from="1607473875553" duration="627000" />
+      <workItem from="1607596708986" duration="673000" />
+      <workItem from="1607597796440" duration="74000" />
+      <workItem from="1607724481703" duration="746000" />
+      <workItem from="1607734634314" duration="127000" />
+      <workItem from="1607735039230" duration="13000" />
+      <workItem from="1607735290183" duration="899000" />
+      <workItem from="1607765896773" duration="1077000" />
+      <workItem from="1607781893643" duration="841000" />
+      <workItem from="1607793065881" duration="1025000" />
+      <workItem from="1607800617437" duration="103000" />
+      <workItem from="1607800850295" duration="104000" />
+      <workItem from="1607800995899" duration="1345000" />
+      <workItem from="1607854007952" duration="3453000" />
     </task>
     <servers />
   </component>
@@ -210,80 +282,5 @@
         <option value="1" />
       </list>
     </option>
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="267" y="27" key="#PHP" timestamp="1605864027307">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="267" y="27" key="#PHP/72.27.1848.1053@72.27.1848.1053" timestamp="1605864027307" />
-    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606599504888">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="591" y="215" width="800" height="684" key="#com.intellij.execution.impl.EditConfigurationsDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1606599504888" />
-    <state x="781" y="225" width="411" height="646" key="#com.intellij.ide.util.MemberChooser" timestamp="1606468999456">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="781" y="225" width="444" height="678" key="#com.intellij.ide.util.MemberChooser/72.27.1848.1053@72.27.1848.1053" timestamp="1606468999456" />
-    <state x="1920" y="225" width="411" height="646" key="#com.intellij.ide.util.MemberChooser/72.27.3768.1053@72.27.3768.1053" timestamp="1606418552066" />
-    <state x="72" y="27" width="870" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1605710350910">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="72" y="27" width="870" height="1053" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1605710350910" />
-    <state x="172" y="127" width="1648" height="853" key="DiffContextDialog" timestamp="1605876406161">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="172" y="127" width="1648" height="853" key="DiffContextDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1605876406161" />
-    <state width="1240" height="258" key="GridCell.Tab.0.bottom" timestamp="1606599793225">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state width="1240" height="258" key="GridCell.Tab.0.bottom/72.27.1848.1053@72.27.1848.1053" timestamp="1606599793225" />
-    <state width="1240" height="258" key="GridCell.Tab.0.center" timestamp="1606599793222">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state width="1240" height="258" key="GridCell.Tab.0.center/72.27.1848.1053@72.27.1848.1053" timestamp="1606599793222" />
-    <state width="1240" height="258" key="GridCell.Tab.0.left" timestamp="1606599793221">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state width="1240" height="258" key="GridCell.Tab.0.left/72.27.1848.1053@72.27.1848.1053" timestamp="1606599793221" />
-    <state width="1240" height="258" key="GridCell.Tab.0.right" timestamp="1606599793224">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state width="1240" height="258" key="GridCell.Tab.0.right/72.27.1848.1053@72.27.1848.1053" timestamp="1606599793224" />
-    <state width="263" height="541" key="HiddenNamespacesPopup" timestamp="1606600083079">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state width="263" height="541" key="HiddenNamespacesPopup/72.27.1848.1053@72.27.1848.1053" timestamp="1606600083079" />
-    <state x="2431" y="243" width="887" height="600" key="NewPhpClassDialog" timestamp="1606764542427">
-      <screen x="72" y="27" width="3768" height="1053" />
-    </state>
-    <state x="2431" y="243" width="887" height="600" key="NewPhpClassDialog/72.27.3768.1053@72.27.3768.1053" timestamp="1606764542427" />
-    <state x="485" y="188" width="1022" height="737" key="SettingsEditor" timestamp="1606121581895">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="485" y="188" width="1022" height="737" key="SettingsEditor/72.27.1848.1053@72.27.1848.1053" timestamp="1606121581895" />
-    <state x="672" y="170" width="637" height="774" key="VCS.ChangeListViewerDialog" timestamp="1605785485719">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="672" y="170" width="637" height="774" key="VCS.ChangeListViewerDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1605785485719" />
-    <state x="591" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2" timestamp="1605715065696">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="591" y="285" width="800" height="543" key="Vcs.Push.Dialog.v2/72.27.1848.1053@72.27.1848.1053" timestamp="1605715065696" />
-    <state x="776" y="468" width="439" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1606599817909">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="776" y="468" width="439" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/72.27.1848.1053@72.27.1848.1053" timestamp="1606599817909" />
-    <state x="709" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog" timestamp="1606393322996">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="709" y="322" width="563" height="470" key="refactoring.ChangeSignatureDialog/72.27.1848.1053@72.27.1848.1053" timestamp="1606393322996" />
-    <state x="660" y="252" key="run.anything.popup" timestamp="1605638614657">
-      <screen x="72" y="27" width="1848" height="1053" />
-    </state>
-    <state x="660" y="252" key="run.anything.popup/72.27.1848.1053@72.27.1848.1053" timestamp="1605638614657" />
-    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup" timestamp="1606508733717">
-      <screen x="1920" y="0" width="1920" height="1080" />
-    </state>
-    <state x="2543" y="239" width="672" height="678" key="search.everywhere.popup/72.27.1848.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606508733717" />
   </component>
 </project>

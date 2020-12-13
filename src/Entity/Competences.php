@@ -14,12 +14,35 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Entity(repositoryClass=CompetencesRepository::class)
  * @ApiResource (
+ *     routePrefix="/admin",
  *     normalizationContext={"groups"={"competence:read"}},
  *     denormalizationContext={"groups"={"competence:write"}},
  *       attributes={
  *              "pagination_enabled"=true,
- *              "pagination_items_per_page"=3
+ *              "pagination_items_per_page"=3,
+ *     "security"= "is_granted('ROLE_Administrateur')",
+ *     "security_message"="Acces non autorisé",
  *     },
+ *     collectionOperations={
+ *             "Get_competence_n"={
+ *                     "method"="GET",
+ *                      "path"="/competences",
+ *     "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager')",
+ *     },
+ *     "POST"={
+ *             "path"="/competences",
+ *     },
+ *     },
+ *     itemOperations={
+ *              "GET"={
+ *                 "path"="/competences/{id}",
+ *                  "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager')",
+ *     },
+ *     "PUT"={
+ *          "path"="/competences/{id}"
+ *     },
+ *          "DELETE",
+ *     }
  * )
  */
 class Competences
@@ -28,21 +51,24 @@ class Competences
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"competence:read","GroupeCompetences:read"})
+     * @Groups({"competence:read","GroupeCompetences:read",
+     *     "referentielGetComptence:read","referentielGet:read","GroupeCompetences:write","RefGroupCompCom:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:read","competence:write"})
-     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @Groups({"referentielGet:read","referentiel:write",
+     *     "referentielGetComptence:read","GroupeCompetences:read",
+     *     "GroupeCompetences:write","RefGroupCompCom:read","competence:read","competence:write"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"competence:read","competence:write"})
-     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @Groups({"referentielGet:read","referentiel:write",
+     *     "referentielGetComptence:read",
+     *     "GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read","competence:read","competence:write"})
      */
     private $description;
 
@@ -55,12 +81,17 @@ class Competences
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence",cascade = { "persist" })
-     * @Groups({"competence:read","competence:write"})
-     * @groups({"GroupeCompetences:write"})
+     * @Groups({"competence:read","competence:write","GroupeCompetences:write","RefGroupCompCom:read"})
      * @Assert\Count(min="3",max="3",exactMessage="boy bayil ligay def")
+     * @Groups({"referentiel:write"})
      * @ApiSubresource()
      */
     private $niveaux;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $archivage;
 
     public function __construct()
     {
@@ -150,6 +181,18 @@ class Competences
                 $niveau->setCompetence(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getArchivage(): ?bool
+    {
+        return $this->archivage;
+    }
+
+    public function setArchivage(bool $archivage): self
+    {
+        $this->archivage = $archivage;
 
         return $this;
     }

@@ -1,3 +1,14 @@
 
-y	php:S1488K"^Immediately return this expression instead of assigning it to the temporary variable "$query".(ÓŸòu8Ã·Íöß.
+z	php:S1488d"^Immediately return this expression instead of assigning it to the temporary variable "$query".(ë®ˆµ8ëúÈÆâ.
+n	php:S1192;"MDefine a constant instead of duplicating this literal "g.apprenants" 5 times.(±ñü‹şÿÿÿÿ8‰¨’Ìâ.
 y	php:S14883"^Immediately return this expression instead of assigning it to the temporary variable "$query".(ÓŸòu8Ğ‚Ìöß.
+k	php:S11928"JDefine a constant instead of duplicating this literal "p.groupes" 6 times.(ªÄªÆşÿÿÿÿ8ØëàÆâ.
+j	php:S1192f"NDefine a constant instead of duplicating this literal "p.referentiel" 6 times.(¢ØÅ¤8ŠÄÍâ.
+q	php:S11929"UDefine a constant instead of duplicating this literal "g.typeDeGroupe=:type" 3 times.(È¦ÁÍ8‰¨’Ìâ.
+j	php:S11926"NDefine a constant instead of duplicating this literal "p.id=:idpromo" 4 times.(îÜÍ€8Çå…æâ.
+z	php:S1488v"^Immediately return this expression instead of assigning it to the temporary variable "$query".(ë®ˆµ8©Ôèçâ.
+{	php:S1488¶"^Immediately return this expression instead of assigning it to the temporary variable "$query".(ë®ˆµ8é—çâ.
+s	php:S1192:"RDefine a constant instead of duplicating this literal "Groupe Principale" 4 times.(àô˜ûıÿÿÿÿ8‰¨’Ìâ.
+y	php:S1488K"^Immediately return this expression instead of assigning it to the temporary variable "$query".(ÓŸòu8Ã·Íöß.
+{	php:S1488Ÿ"^Immediately return this expression instead of assigning it to the temporary variable "$query".(ë®ˆµ8é—çâ.
+{	php:S1488Å"^Immediately return this expression instead of assigning it to the temporary variable "$query".(ë®ˆµ8áµãñâ.
