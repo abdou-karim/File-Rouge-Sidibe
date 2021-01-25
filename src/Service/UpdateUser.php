@@ -41,29 +41,30 @@ class UpdateUser
         $user=$this->userReposirory->find($id);
         $requestAll = $request->request->all();
 
-
        foreach ($requestAll as $key=>$value){
 
             if($key !=="_method" || !$value){
 
                 $user->{"set".ucfirst($key)}($value);
+                $this->em->persist($user);
+                $this->em->flush();
 
             }
         }
         $photo=$request->files->get('photo');
-        $photoBlob = fopen($photo->getRealPath(),"rb");
+
 
         if($photo){
-
+            $photoBlob = fopen($photo->getRealPath(),"rb");
             $user->setPhoto($photoBlob);
         }
+        $this->em->persist($user);
+        $this->em->flush();
         $errors = $this->validator->validate($user);
         if (count($errors)){
             $errors = $this->serializer->serialize($errors,"json");
             return new JsonResponse($errors,Response::HTTP_BAD_REQUEST,[],true);
         }
-        $this->em->persist($user);
-        $this->em->flush();
         return new JsonResponse('success',Response::HTTP_OK);
 
 

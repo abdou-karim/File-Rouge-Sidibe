@@ -28,7 +28,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *        normalizationContext={"groups"={"profilSortie:read"}},
  *          denormalizationContext={"groups"={"profilSortie:write"}},
- *          attributes={ "pagination_enabled"=true,"pagination_items_per_page"=5},
+ *          attributes={ "pagination_enabled"=true,"pagination_items_per_page"=10},
  *
  *     )
  */
@@ -39,13 +39,17 @@ class ProfilSortie
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"profilSortie:read", "profilSortie:write"})
+     * @Groups({"user:read", "user:write"})
+     *@Groups({"profil:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"profilSortie:read", "profilSortie:write"})
+     * @Groups({"user:read", "user:write"})
      * @Groups({"getApprenantsByPs"})
+     * @Groups({"profil:read"})
      * @Assert\NotBlank
      *
      */

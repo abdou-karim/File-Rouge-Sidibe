@@ -25,7 +25,25 @@ class GroupeCompetenceDataPersister implements ContextAwareDataPersisterInterfac
      */
     public function persist($data, array $context = [])
     {
-        // TODO: Implement persist() method.
+       $data->setLibelle($data->getLibelle())
+           ->setDescription($data->getDescription())
+           ->setArchivage(false);
+       $competnce =  $data->getCompetence();
+       $tag = $data->getTags();
+       foreach ($competnce as $value){
+           $data->addCompetence($value);
+           $value->setArchivage(false);
+           $this->entityManager->persist($value);
+       }
+       if($tag){
+           foreach ($tag as $value){
+               $data->addTag($value);
+               $this->entityManager->persist($value);
+           }
+       }
+
+       $this->entityManager->persist($data);
+       $this->entityManager->flush();
     }
 
     /**

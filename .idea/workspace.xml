@@ -5,62 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b22643e4-9f50-4fc3-83ad-a053fdb8ef80" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201130232614.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/migrations/Version20201130234202.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataFixtures/ReferentielFixtures.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/CompetenceDataPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/GroupeCompetenceDataPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/GroupeDataPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataPersister/PromotionDataPersister.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataProvider/PromotionGetCollectionDataProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataProvider/PromotionGetItemDataProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/DataProvider/ReferentielGetItemDataProvider.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Brief.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/BriefRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Service/AddFileService.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataFixtures/CricterDevaluationFixtures.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataFixtures/CrictereDadmissionFixrures.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/DataProvider/ProfilsGetCollectionDataProvider.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/EventListener/JWTCreatedListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/a/0a3e99b9da178509aeb5b3fa6f5dce46bc0eb8be" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/1283891c5be932905a7efc9cc2b76812791bf0e6" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/2/1283891c5be932905a7efc9cc2b76812791bf0e6" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/2/3208c8d6d439df48da60bd45292a0324c0d24b41" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bc9ddd722023891fcc1ab0340d98ba433d0d274" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4bc9ddd722023891fcc1ab0340d98ba433d0d274" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4dfc8200f9ee99d2cf983d626f2573dac1a5e166" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/d/4dfc8200f9ee99d2cf983d626f2573dac1a5e166" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55b6c9c91f995802f7d769037782938e922fc9b0" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/5/55b6c9c91f995802f7d769037782938e922fc9b0" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/72c4e15af538be4279c81730409283b04819a947" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/2/72c4e15af538be4279c81730409283b04819a947" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bd6f44391d53418972ba37d3f1cb1397701823b" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/b/8bd6f44391d53418972ba37d3f1cb1397701823b" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/3/c3c177c8f3b4e1d2985d93cef1ac402c97251726" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/a/aa1c9cd118a732aedcde9c6875608dc9c6e59042" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/a/aa1c9cd118a732aedcde9c6875608dc9c6e59042" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/5/b534b22fa99447dddd2e9a8059c4460bae265a68" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/5/b534b22fa99447dddd2e9a8059c4460bae265a68" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6053831683ee2d9869c8190290c61edd4df1033" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/6/d6053831683ee2d9869c8190290c61edd4df1033" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/e/eef176cedb90d8031c51d11e7e07a5ac3227b144" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/8/d8e281bdff6b93fcc05b28066b2005cb368329ad" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/8/d8e281bdff6b93fcc05b28066b2005cb368329ad" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/dfc667031767b2ab90930f4dabf18b5ebc2e9fba" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/f/dfc667031767b2ab90930f4dabf18b5ebc2e9fba" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/packages/api_platform.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/api_platform.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/GroupeCompetenceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/GroupeCompetenceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/CompetencesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/CompetencesFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/GroupeCompetencesFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/GroupeCompetencesFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/GroupeFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/GroupeFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ProfilFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ProfilFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/PromotionFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/PromotionFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/TagFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/TagFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/ReferentielFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/ReferentielFixtures.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/UserFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataPersister/CompetenceDataPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataPersister/CompetenceDataPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataPersister/GroupeCompetenceDataPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataPersister/GroupeCompetenceDataPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataPersister/ProfilsDataPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataPersister/ProfilsDataPersister.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataPersister/PromotionDataPersister.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataPersister/PromotionDataPersister.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Apprenants.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenants.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Competences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Competences.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Groupe.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Groupe.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GroupeCompetences.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/GroupeTag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/GroupeTag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Niveau.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Niveau.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Profils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profils.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ProfilSortie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ProfilSortie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Profils.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Profil.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Promotion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Promotion.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Referentiel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Referentiel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Tag.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Tag.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/CompetencesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/CompetencesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PromotionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PromotionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ReferentielRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReferentielRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ProfilsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProfilsRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Security/Voter/GroupeCompetencesVoter.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Security/Voter/GroupeCompetencesVoter.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/SetKeyValue.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/AddFileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/AddFileService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/AddUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/AddUser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Service/UpdateUser.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/UpdateUser.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/promotion/index.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,6 +80,11 @@
         <option value="https://github.com/abdou-karim/File-Rouge-Sidibe" />
       </set>
     </option>
+  </component>
+  <component name="PhpServers">
+    <servers>
+      <server host="http://127.0.0.1:8000/api/login" id="71647769-3715-4601-ad6e-7ed754924fe2" name="login" />
+    </servers>
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -152,7 +156,6 @@
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-common" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/phpdocumentor/type-resolver" />
-      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
       <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
       <path value="$PROJECT_DIR$/vendor/api-platform/core" />
       <path value="$PROJECT_DIR$/vendor/symfony/twig-bridge" />
@@ -182,6 +185,8 @@
       <path value="$PROJECT_DIR$/vendor/jms/serializer" />
       <path value="$PROJECT_DIR$/vendor/jms/serializer-bundle" />
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
+      <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
+      <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1kN0ZVCMGmL99lKJQOG1tfSuJVX" />
@@ -195,7 +200,10 @@
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -204,8 +212,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="INHERIT" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="PhpHttpRequestRunConfigurationType" factoryName="PHP HTTP Request" nameIsGenerated="true" server_name="login">
+      <HttpRequestSettings request_body="{&#10;    &quot;username&quot;:&quot;kschmeler&quot;,&#10;    &quot;password&quot;:&quot;Sidibe123&quot;&#10;}" request_method="POST" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -266,7 +280,94 @@
       <workItem from="1607800617437" duration="103000" />
       <workItem from="1607800850295" duration="104000" />
       <workItem from="1607800995899" duration="1345000" />
-      <workItem from="1607854007952" duration="3453000" />
+      <workItem from="1607854007952" duration="4618000" />
+      <workItem from="1607860892041" duration="484000" />
+      <workItem from="1607935647422" duration="42000" />
+      <workItem from="1607958245964" duration="1357000" />
+      <workItem from="1607960321929" duration="25000" />
+      <workItem from="1607960370939" duration="5336000" />
+      <workItem from="1607974005030" duration="67000" />
+      <workItem from="1608023969317" duration="552000" />
+      <workItem from="1608025270923" duration="8416000" />
+      <workItem from="1608053230679" duration="527000" />
+      <workItem from="1608062325821" duration="1842000" />
+      <workItem from="1608072071583" duration="1919000" />
+      <workItem from="1608079527690" duration="1594000" />
+      <workItem from="1608106671680" duration="4482000" />
+      <workItem from="1608112774898" duration="3844000" />
+      <workItem from="1608153321435" duration="1541000" />
+      <workItem from="1608197588088" duration="307000" />
+      <workItem from="1608200134292" duration="1804000" />
+      <workItem from="1608207723819" duration="1204000" />
+      <workItem from="1608278175877" duration="154000" />
+      <workItem from="1608278344893" duration="350000" />
+      <workItem from="1608279361465" duration="238000" />
+      <workItem from="1608280552291" duration="248000" />
+      <workItem from="1608280833684" duration="401000" />
+      <workItem from="1608281295564" duration="77000" />
+      <workItem from="1608281392907" duration="177000" />
+      <workItem from="1608281586352" duration="43000" />
+      <workItem from="1608281681084" duration="272000" />
+      <workItem from="1608281969868" duration="1007000" />
+      <workItem from="1608293615346" duration="607000" />
+      <workItem from="1608296828449" duration="37000" />
+      <workItem from="1608314058163" duration="3000" />
+      <workItem from="1608328421331" duration="650000" />
+      <workItem from="1608381546836" duration="832000" />
+      <workItem from="1608392071834" duration="1713000" />
+      <workItem from="1608396481381" duration="39000" />
+      <workItem from="1608396643901" duration="3290000" />
+      <workItem from="1608485767569" duration="330000" />
+      <workItem from="1608488075352" duration="1145000" />
+      <workItem from="1608491006385" duration="1956000" />
+      <workItem from="1608506821027" duration="605000" />
+      <workItem from="1608557208780" duration="1499000" />
+      <workItem from="1608596289412" duration="757000" />
+      <workItem from="1608624384955" duration="967000" />
+      <workItem from="1608655589002" duration="1133000" />
+      <workItem from="1608745397839" duration="5440000" />
+      <workItem from="1608756674717" duration="799000" />
+      <workItem from="1609189777262" duration="2122000" />
+      <workItem from="1609234917574" duration="78000" />
+      <workItem from="1609235129809" duration="759000" />
+      <workItem from="1609235987449" duration="706000" />
+      <workItem from="1609248114834" duration="735000" />
+      <workItem from="1609283446336" duration="660000" />
+      <workItem from="1609314842450" duration="1940000" />
+      <workItem from="1609370823816" duration="1327000" />
+      <workItem from="1609414720326" duration="10149000" />
+      <workItem from="1609501461806" duration="740000" />
+      <workItem from="1609502875904" duration="3827000" />
+      <workItem from="1609511988374" duration="3443000" />
+      <workItem from="1609548033099" duration="870000" />
+      <workItem from="1609599408343" duration="170000" />
+      <workItem from="1609607235490" duration="8676000" />
+      <workItem from="1609622564570" duration="241000" />
+      <workItem from="1609672097129" duration="12516000" />
+      <workItem from="1609710558910" duration="1088000" />
+      <workItem from="1609713017253" duration="523000" />
+      <workItem from="1609723091711" duration="2594000" />
+      <workItem from="1609747033113" duration="4715000" />
+      <workItem from="1609853033923" duration="1588000" />
+      <workItem from="1609868187908" duration="1978000" />
+      <workItem from="1609871143820" duration="2922000" />
+      <workItem from="1609886739872" duration="3651000" />
+      <workItem from="1609931385544" duration="2322000" />
+      <workItem from="1609969340248" duration="2201000" />
+      <workItem from="1610021897421" duration="6576000" />
+      <workItem from="1610106905372" duration="8808000" />
+      <workItem from="1610127560185" duration="11399000" />
+      <workItem from="1610194374112" duration="5595000" />
+      <workItem from="1610287765828" duration="1130000" />
+      <workItem from="1610370742250" duration="5816000" />
+      <workItem from="1610383502965" duration="1592000" />
+      <workItem from="1610489463828" duration="1561000" />
+      <workItem from="1610547611260" duration="2979000" />
+      <workItem from="1610619530606" duration="10452000" />
+      <workItem from="1610709828696" duration="15987000" />
+      <workItem from="1610732712653" duration="974000" />
+      <workItem from="1610866047069" duration="2625000" />
+      <workItem from="1611517186429" duration="9976000" />
     </task>
     <servers />
   </component>
@@ -282,5 +383,21 @@
         <option value="1" />
       </list>
     </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

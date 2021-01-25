@@ -58,8 +58,10 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                             ->setProfilSortie($this->getReference(ProfilSortieFixtures::getReferenceKey($b %8)))
                             ->setStatut($fake->randomElement(['actif','attente']));
 
+                        for ($p=1;$p<=5;$p++){
+                            $user->setPromotion($this->getReference(PromotionFixtures::getReferenceKey($p)));
+                        }
 
-                            $user->setPromotion($this->getReference(PromotionFixtures::getReferenceKey($b %5)));
 
 
 
@@ -82,7 +84,8 @@ class UserFixtures extends Fixture implements DependentFixtureInterface
                         ->setEmail($fake->email)
                         ->setArchivage(false);
                     //$photo = fopen($fake->imageUrl($width = 640, $height = 480),'rb');
-                    $photo = $fake->imageUrl($width = 640, $height = 480);
+                    $photo = fopen('https://source.unsplash.com/user','rb');
+                   // $photo = $fake->imageUrl($width = 640, $height = 480);
                     $user->setPhoto($photo);
                     $password = $this->encode->encodePassword ($user, 'Sidibe123' );
                     $user->setPassword($password);

@@ -59,6 +59,8 @@ class Groupe
      * @ORM\Column(type="integer")
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
      *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
+     * @Groups({"profil:read"})
+     * @Groups({"user:read", "user:write"})
      */
     private $id;
 
@@ -66,6 +68,8 @@ class Groupe
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
      *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
+     * @Groups({"profil:read"})
+     * @Groups({"user:read", "user:write"})
      */
     private $nom;
 
@@ -73,6 +77,8 @@ class Groupe
      * @ORM\Column(type="date")
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
      *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
+     * @Groups({"profil:read"})
+     * @Groups({"user:read", "user:write"})
      */
     private $dateCreation;
 
@@ -80,6 +86,8 @@ class Groupe
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
      *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
+     * @Groups({"profil:read"})
+     * @Groups({"user:read", "user:write"})
      */
     private $status;
 
@@ -87,6 +95,8 @@ class Groupe
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
      *     "reFormGr:read","grPrincipal:read","promoGrApRefAp:read"})
+     * @Groups({"profil:read"})
+     * @Groups({"user:read", "user:write"})
      */
     private $typeDeGroupe;
 
@@ -98,10 +108,9 @@ class Groupe
     private $promotion;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Apprenants::class, inversedBy="groupes")
+     * @ORM\ManyToMany(targetEntity=Apprenants::class, inversedBy="groupe")
      * @Groups({"groupe:read","groupe:write",
      *     "groupeApprenant:read","grPrincipal:read","promoGrApRefAp:read"})
-     * @ApiSubresource()
      */
     private $apprenants;
 

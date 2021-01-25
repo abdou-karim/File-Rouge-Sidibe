@@ -48,9 +48,9 @@ public function __construct(TagRepository $tagRepository){
             }
 
         }
-        for ($l=0;$l<2;$l++){
+        for ($l=1;$l<=2;$l++){
 
-            $groupeCompetences->addReferentiel($this->getReference(ReferentielFixtures::getReferenceKey($l %2)));
+            $groupeCompetences->addReferentiel($this->getReference(ReferentielFixtures::getReferenceKey($l)));
         }
         $manager->persist($groupeCompetences);
         $manager->flush();
@@ -63,7 +63,7 @@ public function __construct(TagRepository $tagRepository){
 
           CompetencesFixtures::class,
           TagFixtures::class,
-          ReferentielFixtures::class
-      );
+          ReferentielFixtures::class,
+          );
     }
 }

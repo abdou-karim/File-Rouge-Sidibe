@@ -14,6 +14,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
  * @ORM\Entity(repositoryClass=PromotionRepository::class)
  * @ApiResource(
  *     routePrefix="/admin",
+ *     normalizationContext={"groups"={"promotion:read"}},
+ *     denormalizationContext={"groups"={"promotion:write"}},
  *     attributes={
  *          "security"= "is_granted('ROLE_Apprenant') or is_granted('ROLE_Formateur')",
  *     },
@@ -35,10 +37,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *                    "method"="GET",
  *                     "path"="/promotion/apprenants/attente",
  *                      "normalization_context"={"groups"={"promo_app_attente:read"}},
- *     },
- *     "POST"={
- *            "denormalization_context"={"groups"={"post_promo:write"}},
- *
  *     },
  *     },
  *     itemOperations={
@@ -120,7 +118,8 @@ class Promotion
      * @ORM\Column(type="integer")
      * @Groups({"groupe:read","groupe:write","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"})
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"})
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $id;
 
@@ -128,8 +127,9 @@ class Promotion
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","reFormGr:read","grPrincipal:read",
      *     "promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"
      *   })
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $langue;
 
@@ -137,8 +137,9 @@ class Promotion
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","reFormGr:read","grPrincipal:read",
      *     "promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"
      *     })
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $titre;
 
@@ -146,8 +147,9 @@ class Promotion
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"
      *     })
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $description;
 
@@ -155,8 +157,9 @@ class Promotion
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"
      *     })
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $lieu;
 
@@ -164,8 +167,9 @@ class Promotion
      * @ORM\Column(type="date")
      * @Groups({"groupe:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"
      *    })
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $dateFinProvisoire;
 
@@ -173,8 +177,9 @@ class Promotion
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"
      *     })
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $fabrique;
 
@@ -182,8 +187,9 @@ class Promotion
      * @ORM\Column(type="date")
      * @Groups({"groupe:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"
      *     })
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $dateFinReelle;
 
@@ -191,8 +197,9 @@ class Promotion
      * @ORM\Column(type="string", length=255)
      * @Groups({"groupe:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","RefGroupCompCom:read"
-     * ,"post_promo:write","promoGrApRefAp:read","PromoRef:write"
+     * ,"promotionPost","promoGrApRefAp:read","PromoRef:write"
      *     })
+     * @Groups ({"referentiel:read","referentiel:write"})
      */
     private $status;
 
@@ -214,29 +221,29 @@ class Promotion
     /**
      * @ORM\Column(type="date")
      * @Groups ({"grPrincipal:read","PromoRef:write"})
+     * @Groups ({"referentiel:read","referentiel:write","promotionPost"})
      */
     private $dateDebut;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="promo",cascade = { "persist" })
-     * @ORM\JoinColumn(nullable=false)
-     * @Groups ({"reFormGr:read","grPrincipal:read","post_promo:write",
-     *     "promo_app_attente:read","promoGrApRefAp:read","PromoRef:write"})
-     */
-    private $referentiel;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Apprenants::class, mappedBy="promotion")
-     * @Groups ({"promo_app_attente:read","post_promo:write","promoGrApRefAp:read","promoDeleteAddApprenant:write"})
+     * @ORM\OneToMany(targetEntity=Apprenants::class, mappedBy="promotion",cascade = { "persist" })
+     * @Groups ({"promo_app_attente:read","promotionPost","promoGrApRefAp:read","promoDeleteAddApprenant:write"})
      * @ApiSubresource
      */
     private $apprenants;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Referentiel::class, inversedBy="promotions")
+     *    @Groups ({"promotionPost"})
+     */
+    private $referentiels;
 
     public function __construct()
     {
         $this->formateurs = new ArrayCollection();
         $this->groupes = new ArrayCollection();
         $this->apprenants = new ArrayCollection();
+        $this->referentiels = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -406,18 +413,6 @@ class Promotion
         return $this;
     }
 
-    public function getReferentiel(): ?Referentiel
-    {
-        return $this->referentiel;
-    }
-
-    public function setReferentiel(?Referentiel $referentiel): self
-    {
-        $this->referentiel = $referentiel;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Apprenants[]
      */
@@ -444,6 +439,30 @@ class Promotion
                 $apprenant->setPromotion(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Referentiel[]
+     */
+    public function getReferentiels(): Collection
+    {
+        return $this->referentiels;
+    }
+
+    public function addReferentiel(Referentiel $referentiel): self
+    {
+        if (!$this->referentiels->contains($referentiel)) {
+            $this->referentiels[] = $referentiel;
+        }
+
+        return $this;
+    }
+
+    public function removeReferentiel(Referentiel $referentiel): self
+    {
+        $this->referentiels->removeElement($referentiel);
 
         return $this;
     }

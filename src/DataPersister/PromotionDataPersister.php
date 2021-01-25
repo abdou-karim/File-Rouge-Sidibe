@@ -4,11 +4,13 @@ namespace App\DataPersister;
 use ApiPlatform\Core\DataPersister\ContextAwareDataPersisterInterface;
 use App\Entity\Promotion;
 use App\Repository\PromotionRepository;
+use App\Repository\ReferentielRepository;
 use App\Service\AddFileService;
 use Doctrine\ORM\EntityManagerInterface;
 
 
-
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class PromotionDataPersister implements ContextAwareDataPersisterInterface
@@ -17,12 +19,15 @@ class PromotionDataPersister implements ContextAwareDataPersisterInterface
     private $request;
     private $promoRepo;
     private $addFil;
+    private $referentielRepository;
     public function __construct(EntityManagerInterface $manager, RequestStack $requestStack,
-                                PromotionRepository $promotionRepository,AddFileService $addFileService){
+                                PromotionRepository $promotionRepository,AddFileService $addFileService,
+                                ReferentielRepository $referentielRepository){
         $this->manager=$manager;
         $this->request=$requestStack->getCurrentRequest();
         $this->promoRepo=$promotionRepository;
         $this->addFil=$addFileService;
+        $this->referentielRepository=$referentielRepository;
 
 
     }
@@ -43,14 +48,12 @@ class PromotionDataPersister implements ContextAwareDataPersisterInterface
 
 
 
-        if($context["item_operation_name"]==="promo_delete_add_apprenant"){
-
+        if($context["collection_operation_name"]==="POST"){
+            $referentiel= $data->getReferentiels();
+            dd($referentiel);
+            $this->manager->persist($data);
+            $this->manager->flush();
         }
-        if ($context['item_operation_name']==="promo_put_Ref"){
-
-          $this->addFil->AddFiles($this->request);
-        }
-
     }
 
     /**

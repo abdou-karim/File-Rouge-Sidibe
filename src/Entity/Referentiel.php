@@ -10,6 +10,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\File;
 
 /**
  * @ORM\Entity(repositoryClass=ReferentielRepository::class)
@@ -20,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     routePrefix="/admin",
  *     attributes={
  *      "pagination_enabled"=true,
- *     "pagination_items_per_page"=3,
+ *     "pagination_items_per_page"=5,
  *     "security"= "is_granted('ROLE_Administrateur') or is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager')",
  *     "security_message"="Acces non autorisé",
  *     },
@@ -35,7 +36,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *                    "path"="/referentiels/grpecompetences",
  *                   "normalization_context"={"groups"={"referentielGet:read"}},
  *                           },
- *                      "POST",
+ *
  *     },
  *     itemOperations={
  *
@@ -61,7 +62,10 @@ class Referentiel
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups({"referentiel:read","referentiel:write","referentielGetComptence:read",
-     *     "reFormGr:read","grPrincipal:read","post_promo:write","promo_app_attente:read","promoGrApRefAp:read","PromoRef:write"})
+     *     "reFormGr:read","grPrincipal:read","promotion:write","promotion:read","promo_app_attente:read","promoGrApRefAp:read","PromoRef:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @groups({"cricterDadmissions:read","cricterDadmissions:write"})
+     *  @groups({"cricterDevaluations:read","cricterDevaluations:write"})
 
      *
      */
@@ -70,8 +74,11 @@ class Referentiel
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"referentiel:read","referentiel:write","referentiel:read","referentiel:write",
-     *     "referentielGetComptence:read","reFormGr:read","grPrincipal:read","post_promo:write",
+     *     "referentielGetComptence:read","reFormGr:read","grPrincipal:read","promotion:write","promotion:read",
      *     "RefGroupCompCom:read","promo_app_attente:read","promoGrApRefAp:read","PromoRef:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @groups({"cricterDadmissions:read","cricterDadmissions:write"})
+     *  @groups({"cricterDevaluations:read","cricterDevaluations:write"})
      * @Assert\NotBlank
      *
      */
@@ -79,56 +86,68 @@ class Referentiel
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"referentielGet:read","referentielGetComptence:read","reFormGr:read","grPrincipal:read","post_promo:write",
-     *     "RefGroupCompCom:read","promo_app_attente:read","promoGrApRefAp:read","PromoRef:write","referentiel:write"})
+     * @Groups({"referentielGet:read","referentielGetComptence:read","reFormGr:read","grPrincipal:read","promotion:write",
+     *     "RefGroupCompCom:read","promo_app_attente:read","promoGrApRefAp:read","PromoRef:write","referentiel:read","referentiel:write"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @groups({"cricterDadmissions:read","cricterDadmissions:write"})
+     *  @groups({"cricterDevaluations:read","cricterDevaluations:write"})
      * @Assert\NotBlank
      *
      */
     private $presentation;
 
     /**
-     * @ORM\Column(type="string", length=255)
+        @ORM\ManyToMany(targetEntity=GroupeCompetences::class, inversedBy="referentiels")
      * @Groups({"referentiel:read","referentiel:write","referentielGet:read",
-     *     "referentielGetComptence:read","reFormGr:read","grPrincipal:read","post_promo:write",
+     *     "referentielGetComptence:read","reFormGr:read","grPrincipal:read","promotion:write","promotion:read",
      *     "RefGroupCompCom:read","promo_app_attente:read","promoGrApRefAp:read","PromoRef:write"})
+     * @groups({"cricterDadmissions:read","cricterDadmissions:write"})
+     *  @groups({"cricterDevaluations:read","cricterDevaluations:write"})
      *
-     */
-    private $crictereAdmission;
-
-    /**
-     * @ORM\Column(type="text")
-     * @Groups({"referentiel:read","referentiel:write","referentielGet:read",
-     *     "referentielGetComptence:read","reFormGr:read","grPrincipal:read","post_promo:write",
-     *     "RefGroupCompCom:read","promo_app_attente:read","promoGrApRefAp:read","PromoRef:write"})
      *
-     */
-    private $crictereEvaluation;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=GroupeCompetences::class, inversedBy="referentiels")
-     * @Groups({"referentiel:read","referentielGet:read","referentiel:write",
-     *     "referentielGetComptence:read","reFormGr:read","RefGroupCompCom:read"})
-     * @ApiSubresource
-     */
+    */
     private $groupeCompetence;
-
-    /**
-     * @ORM\OneToMany(targetEntity=Promotion::class, mappedBy="referentiel",cascade = { "persist" })
-     *
-     */
-    private $promo;
-
     /**
      * @ORM\Column(type="blob")
-     * @Groups({"referentiel:read","referentiel:write","post_promo:write",
-     *     "RefGroupCompCom:read","PromoRef:write"})
+     * @Groups({"referentiel:read","referentiel:write",
+     *     "RefGroupCompCom:read","PromoRef:write","promotion:write","promotion:read"})
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * * @Assert\File(
+     *     mimeTypes = {"application/pdf", "application/x-pdf"},
+     *     mimeTypesMessage = "Please upload a valid PDF"
+     * )
+     * @groups({"cricterDadmissions:read","cricterDadmissions:write"})
+     *  @groups({"cricterDevaluations:read","cricterDevaluations:write"})
      */
     private $programme;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Promotion::class, mappedBy="referentiels")
+     * @groups({"referentiel:read","referentiel:write"})
+     * @groups({"cricterDadmissions:read","cricterDadmissions:write"})
+     *  @groups({"cricterDevaluations:read","cricterDevaluations:write"})
+     */
+    private $promotions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=CricterDadmissions::class, mappedBy="referentiel",cascade = { "persist" })
+     * @groups({"referentiel:read","referentiel:write"})
+     */
+    private $cricterDadmissions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=CricterDevaluations::class, mappedBy="referentiel",cascade = { "persist" })
+     * @groups({"referentiel:read","referentiel:write"})
+     */
+    private $cricterDevaluations;
+
 
     public function __construct()
     {
         $this->groupeCompetence = new ArrayCollection();
-        $this->promo = new ArrayCollection();
+        $this->cricterDadmissions = new ArrayCollection();
+        $this->cricterDevaluations = new ArrayCollection();
+        $this->promotions = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -160,29 +179,6 @@ class Referentiel
         return $this;
     }
 
-    public function getCrictereAdmission(): ?string
-    {
-        return $this->crictereAdmission;
-    }
-
-    public function setCrictereAdmission(string $crictereAdmission): self
-    {
-        $this->crictereAdmission = $crictereAdmission;
-
-        return $this;
-    }
-
-    public function getCrictereEvaluation(): ?string
-    {
-        return $this->crictereEvaluation;
-    }
-
-    public function setCrictereEvaluation(string $crictereEvaluation): self
-    {
-        $this->crictereEvaluation = $crictereEvaluation;
-
-        return $this;
-    }
 
     /**
      * @return Collection|GroupeCompetences[]
@@ -208,36 +204,6 @@ class Referentiel
         return $this;
     }
 
-    /**
-     * @return Collection|Promotion[]
-     */
-    public function getPromo(): Collection
-    {
-        return $this->promo;
-    }
-
-    public function addPromo(Promotion $promo): self
-    {
-        if (!$this->promo->contains($promo)) {
-            $this->promo[] = $promo;
-            $promo->setReferentiel($this);
-        }
-
-        return $this;
-    }
-
-    public function removePromo(Promotion $promo): self
-    {
-        if ($this->promo->removeElement($promo)) {
-            // set the owning side to null (unless already changed)
-            if ($promo->getReferentiel() === $this) {
-                $promo->setReferentiel(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getProgramme()
     {
         if ($this->programme) {
@@ -255,6 +221,88 @@ class Referentiel
     public function setProgramme($programme): self
     {
         $this->programme = $programme;
+
+        return $this;
+    }
+
+
+    /**
+     * @return Collection|Promotion[]
+     */
+    public function getPromotions(): Collection
+    {
+        return $this->promotions;
+    }
+
+    public function addPromotion(Promotion $promotion): self
+    {
+        if (!$this->promotions->contains($promotion)) {
+            $this->promotions[] = $promotion;
+            $promotion->addReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removePromotion(Promotion $promotion): self
+    {
+        if ($this->promotions->removeElement($promotion)) {
+            $promotion->removeReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CricterDadmissions[]
+     */
+    public function getCricterDadmissions(): Collection
+    {
+        return $this->cricterDadmissions;
+    }
+
+    public function addCricterDadmission(CricterDadmissions $cricterDadmission): self
+    {
+        if (!$this->cricterDadmissions->contains($cricterDadmission)) {
+            $this->cricterDadmissions[] = $cricterDadmission;
+            $cricterDadmission->addReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCricterDadmission(CricterDadmissions $cricterDadmission): self
+    {
+        if ($this->cricterDadmissions->removeElement($cricterDadmission)) {
+            $cricterDadmission->removeReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CricterDevaluations[]
+     */
+    public function getCricterDevaluations(): Collection
+    {
+        return $this->cricterDevaluations;
+    }
+
+    public function addCricterDevaluation(CricterDevaluations $cricterDevaluation): self
+    {
+        if (!$this->cricterDevaluations->contains($cricterDevaluation)) {
+            $this->cricterDevaluations[] = $cricterDevaluation;
+            $cricterDevaluation->addReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCricterDevaluation(CricterDevaluations $cricterDevaluation): self
+    {
+        if ($this->cricterDevaluations->removeElement($cricterDevaluation)) {
+            $cricterDevaluation->removeReferentiel($this);
+        }
 
         return $this;
     }

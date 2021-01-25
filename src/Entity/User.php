@@ -10,6 +10,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiSubresource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
 /**
  * @ApiResource(
@@ -19,7 +21,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "get_admin_users"={
  *               "method"="GET",
  *               "path"="/users",
- *           "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager')",
+ *           "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager') or is_granted('ROLE_Administrateur')",
+ *
  *
  *          },
  *     "POST"={
@@ -28,7 +31,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *       attributes={
  *              "pagination_enabled"=true,
- *          "pagination_items_per_page"=10,
+ *          "pagination_items_per_page"=5,
  *     "security_message"="Acces non autorisé",
  *     "security"= "is_granted('ROLE_Administrateur')",
  *
@@ -38,10 +41,10 @@ use Symfony\Component\Validator\Constraints as Assert;
  *               "method"="GET",
  *               "path"="/users/{id}",
  *                   "defaults"={"id"=null},
- *     "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager') or is_granted('ROLE_Apprenant')",
+ *     "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager') or is_granted('ROLE_Apprenant') or is_granted('ROLE_Administrateur')",
  *
  *          },
- *          "delete_user"={
+ *          "delete_users"={
  *     "method"="DELETE","path"="/users/{id}",
  *     "security"= "is_granted('ROLE_Administrateur')"
  * },
@@ -56,10 +59,11 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     denormalizationContext={"groups"={"user:write"}}
  * )
  * @ApiFilter(BooleanFilter::class, properties={"archivage"})
+ *
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @ORM\InheritanceType("JOINED")
  * @ORM\DiscriminatorColumn(name="discr", type="string")
- * @ORM\DiscriminatorMap({"admin"="User","apprenant" = "Apprenants","formateur"="Formateurs","community Managerr"="CommunityManager"})
+ * @ORM\DiscriminatorMap({"administrateur"="User","apprenants" = "Apprenants","formateurs"="Formateurs","community Manager"="CommunityManager"})
  * @ORM\Entity(repositoryClass=UserRepository::class)
  */
 class User implements UserInterface
@@ -70,9 +74,10 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      * @Groups({"user:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
      *     "promoDeleteAddApprenant:write"
      * })
+     * @Groups({"profil:read"})
      */
     private $id;
 
@@ -81,7 +86,7 @@ class User implements UserInterface
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",*
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",*
      *     "promoDeleteAddApprenant:write"
      * })
      * @Assert\NotBlank
@@ -102,7 +107,7 @@ class User implements UserInterface
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
      *     "promoDeleteAddApprenant:write"
      *     })
      * @Assert\NotBlank
@@ -114,7 +119,7 @@ class User implements UserInterface
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})*
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
      *     "promoDeleteAddApprenant:write"
      *     })
      * @Assert\NotBlank
@@ -126,7 +131,7 @@ class User implements UserInterface
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
      *     "promoDeleteAddApprenant:write"
      *     })
      * @Assert\NotBlank
@@ -138,10 +143,10 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="blob", nullable=true)
-     * Groups({"user:read", "user:write"})
+     * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read"
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read"
      * ,"promoDeleteAddApprenant:write"
      *     })
      */
@@ -155,9 +160,8 @@ class User implements UserInterface
     private $archivage;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Profils::class, inversedBy="User")
+     * @ORM\ManyToOne(targetEntity=Profil::class)
      * @Groups({"user:read", "user:write"})
-     * @Assert\NotBlank
      */
     private $profils;
 
@@ -312,14 +316,14 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getProfils(): ?Profils
+    public function getProfils(): ?Profil
     {
         return $this->profils;
     }
 
-    public function setProfils(?Profils $profil): self
+    public function setProfils(?Profil $profils): self
     {
-        $this->profils = $profil;
+        $this->profils = $profils;
 
         return $this;
     }

@@ -25,7 +25,9 @@ class CompetenceDataPersister implements ContextAwareDataPersisterInterface
      */
     public function persist($data, array $context = [])
     {
-        // TODO: Implement persist() method.
+        $data->setArchivage(false);
+       $this->entityManager->persist($data);
+       $this->entityManager->flush();
     }
 
     /**

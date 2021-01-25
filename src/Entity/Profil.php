@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use App\Repository\ProfilsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -40,6 +41,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
  *               "get_admin_profils_id"={
  *               "method"="GET",
  *               "path"="/profils/{id}",
+ *          "normalization_context"={"groups"={"profilUser:read"}},
  *
  *
  *          },
@@ -56,32 +58,38 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
  *     },
  *     attributes={
  *              "pagination_enabled"=true,
+ *              "pagination_items_per_page"=5,
  *          "security"= "is_granted('ROLE_Administrateur')",
  *                  "security_message"="Acces non autorisé"
  *     },
- *     normalizationContext={"groups"={"profils:read"}},
- *     denormalizationContext={"groups"={"profils:write"}}
+ *     normalizationContext={"groups"={"profil:read"}},
+ *     denormalizationContext={"groups"={"profil:write"}}
  * )
  */
-class Profils
+class Profil
 {
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"profils:read"})
+     * @Groups({"profil:read"})
+     * @Groups({"user:read", "user:write"})
+     *
      */
     protected $id;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
      * @Assert\NotBlank
-     * @Groups({"profils:read", "profils:write"})
+     * @Groups({"profil:read", "profil:write"})
+     * @Groups({"user:read", "user:write"})
      */
     private $libelle;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="profils")
+     * @Groups({"profil:read"})
+     *
      *
      */
     private $user;

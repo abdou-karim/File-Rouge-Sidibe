@@ -41,7 +41,7 @@ class GroupeCompetencesVoter extends Voter
                 { return true; }
              break;
             case 'POST_VIEW':
-                if ( $user->getRoles()[0]==="ROLE_Administrateur")
+                if ( $user->getRoles()[0] == "ROLE_Administrateur")
                 { return true; }
                 break;
         }

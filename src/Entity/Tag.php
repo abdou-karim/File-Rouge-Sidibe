@@ -12,7 +12,14 @@ use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=TagRepository::class)
- * @ApiResource()
+ * @ApiResource(
+ *     routePrefix="/admin",
+ *     normalizationContext={"groups"={"tags:read"}},
+ *     denormalizationContext={"groups"={"tags:write"}},
+ *     collectionOperations={
+ *              "GET"={},
+ *     },
+ * )
  */
 class Tag
 {
@@ -21,28 +28,33 @@ class Tag
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @Groups ({"tags:read", "tag:write"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @Groups ({"tags:read", "tag:write"})
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
+     * @Groups ({"tags:read", "tag:write"})
      */
     private $descriptif;
 
     /**
      * @ORM\ManyToMany(targetEntity=GroupeCompetences::class, inversedBy="tags",cascade = { "persist" })
+     * @Groups ({"tags:read"})
      */
     private $groupeCompetence;
 
     /**
      * @ORM\ManyToMany(targetEntity=GroupeTag::class, mappedBy="Tag")
+     * @Groups ({"tags:read"})
      */
     private $groupeTags;
 

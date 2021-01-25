@@ -45,8 +45,8 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
  *          },
  *
  *      },
- *       normalizationContext={"groups"={"apprenant:read","user:read"}},
- *       denormalizationContext={"groups"={"apprenant:write","user:write"}}
+ *       normalizationContext={"groups"={"apprenant:read"}},
+ *       denormalizationContext={"groups"={"apprenant:write"}}
  *
  * )
  * @ORM\Entity(repositoryClass=ApprenantsRepository::class)
@@ -58,20 +58,24 @@ class Apprenants extends User
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
      * @Assert\NotBlank
      * @Groups({"getApprenantsByPs"})
+     * @Groups({"user:read", "user:write"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write",
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write",
      *     "promoGrApRefAp:read","promoDeleteAddApprenant:write"
      * })
+     * @Groups({"profil:read"})
      */
     private $genre;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups({"user:read", "user:write"})
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write","promoGrApRefAp:read",
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
      * "promoDeleteAddApprenant:write"
      *     })
+     * @Groups({"profil:read"})
      * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      */
@@ -79,11 +83,13 @@ class Apprenants extends User
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Groups({"user:read", "user:write"})
      * @Groups({"apprenant:read", "apprenant:write","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read",
-     *     "grPrincipal:read","promo_app_attente:read","post_promo:write",
+     *     "grPrincipal:read","promo_app_attente:read","promotion:write",
      *     "promoGrApRefAp:read","promoDeleteAddApprenant:write"
      * })
+     * @Groups({"profil:read"})
      * @Groups({"getApprenantsByPs"})
      * @Assert\NotBlank
      */
@@ -92,32 +98,38 @@ class Apprenants extends User
     /**
      * @ORM\ManyToOne(targetEntity=ProfilSortie::class, inversedBy="apprenants")
      * @Groups({"groupe:read","groupe:write"})
+     * @Groups({"user:read", "user:write"})
      * @ORM\JoinColumn(nullable=false)
+     * @Groups({"user:read", "user:write"})
+     * @Groups({"profil:read"})
      * @ApiSubresource()
      *
      */
     private $profilSortie;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="apprenants")
+     * @ORM\ManyToMany(targetEntity=Groupe::class, mappedBy="apprenant", cascade={"persist"})
+     * @Groups({"user:read", "user:write"})
      */
-    private $groupes;
+    private $groupe;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups ({"promo_app_attente:read","post_promo:write"})
+     * @Groups ({"promo_app_attente:read","promotion:write"})
+     * @Groups({"user:read", "user:write"})
+     * @Groups({"profil:read"})
      */
     private $statut;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="apprenants")
+     * @ORM\ManyToOne(targetEntity=Promotion::class, inversedBy="apprenants",cascade = { "persist" })
      * @ORM\JoinColumn(nullable=true)
      */
     private $promotion;
 
     public function __construct()
     {
-        $this->groupes = new ArrayCollection();
+        $this->groupe = new ArrayCollection();
     }
 
 
@@ -174,13 +186,13 @@ class Apprenants extends User
      */
     public function getGroupes(): Collection
     {
-        return $this->groupes;
+        return $this->groupe;
     }
 
     public function addGroupe(Groupe $groupe): self
     {
-        if (!$this->groupes->contains($groupe)) {
-            $this->groupes[] = $groupe;
+        if (!$this->groupe->contains($groupe)) {
+            $this->groupe[] = $groupe;
             $groupe->addApprenant($this);
         }
 
@@ -189,7 +201,7 @@ class Apprenants extends User
 
     public function removeGroupe(Groupe $groupe): self
     {
-        if ($this->groupes->removeElement($groupe)) {
+        if ($this->groupe->removeElement($groupe)) {
             $groupe->removeApprenant($this);
         }
 

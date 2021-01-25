@@ -9,26 +9,33 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 
 /**
  * @ORM\Entity(repositoryClass=GroupeCompetencesRepository::class)
+ * @ApiFilter(BooleanFilter::class, properties={"archivage"})
  * @ApiResource(
  *     routePrefix="/admin",
  *     normalizationContext={"groups"={"GroupeCompetences:read"}},
  *     denormalizationContext={"groups"={"GroupeCompetences:write"}},
  *     collectionOperations={
  *                   "GET"={
- *                  "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager') or is_granted('ROLE_Apprenant')",
+ *                  "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager') or is_granted('ROLE_Apprenant') or is_granted('ROLE_Administrateur')",
+ *                      "path"="/groupe_competences",
  *     },
  *                   "POST"={
- *                  "security" = "is_granted('POST_VIEW', object)",
+ *                  "path"="/groupe_competences",
+ *                  "security"= "is_granted('ROLE_Administrateur')",
  *     },
  *     },
  *     itemOperations={
  *     "PUT",
  *     "DELETE",
  *            "GET"={
- *     "path"="/groupe_competences/{id}/competences",
+ *     "path"="/
+ * competences",
  *     "security" = "is_granted('GROUPE_COMPETENCE_READ', object)"
  * },
  *
@@ -38,7 +45,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
  *     },
  *       attributes={
  *              "pagination_enabled"=true,
- *              "pagination_items_per_page"=3,
+ *              "pagination_items_per_page"=5,
  *     "security"= "is_granted('ROLE_Administrateur')",
  *     },
  * )
@@ -49,9 +56,11 @@ class GroupeCompetences
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"referentielGet:read","referentielGetComptence:read","referentiel:read","GroupeCompetences:read",
+     * @Groups(
+     *     {"referentielGet:read","referentielGetComptence:read","referentiel:read","GroupeCompetences:read",
      *     "GroupeCompetences:write","RefGroupCompCom:read","referentiel:write"
      *     })
+     * @Groups ({"tags:read"})
      */
     private $id;
 
@@ -60,6 +69,8 @@ class GroupeCompetences
      * @groups({"GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read",
      *     "referentielGetComptence:read",
      *     "referentielGet:read","referentiel:write","referentiel:read","competence:write"})
+     * @Groups ({"tags:read"})
+     * @Assert\NotBlank
      */
     private $libelle;
 
@@ -68,13 +79,16 @@ class GroupeCompetences
      * @groups({"GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read",
      *     "referentielGetComptence:read",
      *     "referentielGet:read","referentiel:write","referentiel:read","competence:write"})
+     * @Groups ({"tags:read"})
+     * @Assert\NotBlank
      */
     private $description;
 
     /**
      * @ORM\ManyToMany(targetEntity=Competences::class, inversedBy="groupeCompetences",cascade = { "persist" })
-     * @groups({"GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read",
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read","referentiel:read",
      *     "referentielGet:read","referentiel:write","referentielGetComptence:read"})
+     *
      * @ApiSubresource
      */
     private $competence;
@@ -87,6 +101,7 @@ class GroupeCompetences
 
     /**
      * @ORM\ManyToMany(targetEntity=Referentiel::class, mappedBy="groupeCompetence")
+     * @groups({"GroupeCompetences:read","GroupeCompetences:write"})
      */
     private $referentiels;
 

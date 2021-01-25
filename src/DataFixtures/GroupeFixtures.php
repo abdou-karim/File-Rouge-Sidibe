@@ -39,7 +39,7 @@ class GroupeFixtures extends Fixture implements DependentFixtureInterface
         }
         for ($i=1;$i<=4;$i++){
 
-            $tabPromo[]=$this->getReference(PromotionFixtures::getReferenceKey($i %3));
+            $tabPromo[]=$this->getReference(PromotionFixtures::getReferenceKey($i));
         }
 
         foreach ($tabPromo as $item){

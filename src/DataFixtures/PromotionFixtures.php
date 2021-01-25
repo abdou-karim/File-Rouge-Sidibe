@@ -5,19 +5,22 @@ use App\Entity\Groupe;
 use App\Entity\Promotion;
 use App\Repository\ApprenantsRepository;
 use App\Repository\FormateursRepository;
+use App\Repository\ReferentielRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 
-class PromotionFixtures extends  Fixture
+class PromotionFixtures extends  Fixture implements DependentFixtureInterface
 {
     private $apprenantsRepository;
     private $formateursRepository;
-    public function __construct(ApprenantsRepository $apprenantsRepository, FormateursRepository $formateursRepository){
+    private $referentielRepository;
+    public function __construct(ApprenantsRepository $apprenantsRepository, FormateursRepository $formateursRepository,ReferentielRepository $referentielRepository){
 
         $this->apprenantsRepository=$apprenantsRepository;
         $this->formateursRepository=$formateursRepository;
+        $this->referentielRepository=$referentielRepository;
     }
     public static function getReferenceKey($i){
         return sprintf('promotion_user_%s',$i);
@@ -29,12 +32,13 @@ class PromotionFixtures extends  Fixture
 
         $tabApp=$this->apprenantsRepository->findAll();
         $tabForm=$this->formateursRepository->findAll();
+        $tabRef= $this->referentielRepository->findAll();
 
 
 
 
 
-                for ($i=0;$i<=5;$i++){
+                for ($i=1;$i<=5;$i++){
 
                     $promotion=new Promotion();
                     $promotion->setTitre('promo#'.$i)
@@ -58,7 +62,7 @@ class PromotionFixtures extends  Fixture
 
                     for ($l=1;$l<=1;$l++){
 
-                        $promotion->setReferentiel($this->getReference(ReferentielFixtures::getReferenceKey($i %1)));
+                        $promotion->addReferentiel($this->getReference(ReferentielFixtures::getReferenceKey($i)));
                     }
                     $groupePrincipale=new Groupe();
                     $groupePrincipale->setNom('Groupe Principale '.$i)
@@ -85,4 +89,15 @@ class PromotionFixtures extends  Fixture
     }
 
 
+    /**
+     * @inheritDoc
+     */
+    public function getDependencies()
+    {
+        return array(
+            ReferentielFixtures::class,
+            CrictereDadmissionFixrures::class,
+            CricterDevaluationFixtures::class,
+        );
+    }
 }

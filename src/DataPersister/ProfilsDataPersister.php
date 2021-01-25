@@ -2,7 +2,7 @@
 namespace App\DataPersister;
 
 use ApiPlatform\Core\DataPersister\DataPersisterInterface;
-use App\Entity\Profils;
+use App\Entity\Profil;
 use Doctrine\ORM\EntityManagerInterface;
 
 
@@ -23,11 +23,11 @@ class ProfilsDataPersister implements DataPersisterInterface
      */
     public function supports($data,   array $context = []): bool
     {
-        return $data instanceof Profils;
+        return $data instanceof Profil;
     }
 
     /**
-     * @param Profils $data
+     * @param Profil $data
      * @param array $context
      */
     public function persist($data, array $context = [])

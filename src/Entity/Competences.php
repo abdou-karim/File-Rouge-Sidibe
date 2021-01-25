@@ -27,7 +27,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *             "Get_competence_n"={
  *                     "method"="GET",
  *                      "path"="/competences",
- *     "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager')",
+ *     "security"= "is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager') or is_granted('ROLE_Administrateur')",
  *     },
  *     "POST"={
  *             "path"="/competences",
@@ -41,7 +41,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     "PUT"={
  *          "path"="/competences/{id}"
  *     },
- *          "DELETE",
+ *          "DELETE"={
+ *               "path"="/competences/{id}"
+ *     },
  *     }
  * )
  */
@@ -51,24 +53,26 @@ class Competences
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"competence:read","GroupeCompetences:read",
+     * @Groups({"competence:read","GroupeCompetences:read","competence:write",
      *     "referentielGetComptence:read","referentielGet:read","GroupeCompetences:write","RefGroupCompCom:read"})
      */
-    private $id;
+    protected $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"referentielGet:read","referentiel:write",
+     * @Groups({"referentielGet:read","referentiel:write","referentiel:read",
      *     "referentielGetComptence:read","GroupeCompetences:read",
      *     "GroupeCompetences:write","RefGroupCompCom:read","competence:read","competence:write"})
+     * @Assert\NotBlank
      */
     private $libelle;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"referentielGet:read","referentiel:write",
-     *     "referentielGetComptence:read",
+     *     "referentielGetComptence:read","referentiel:read",
      *     "GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read","competence:read","competence:write"})
+     * @Assert\NotBlank
      */
     private $description;
 
@@ -81,7 +85,7 @@ class Competences
 
     /**
      * @ORM\OneToMany(targetEntity=Niveau::class, mappedBy="competence",cascade = { "persist" })
-     * @Groups({"competence:read","competence:write","GroupeCompetences:write","RefGroupCompCom:read"})
+     * @Groups({"competence:read","competence:write","GroupeCompetences:read","GroupeCompetences:write","RefGroupCompCom:read"})
      * @Assert\Count(min="3",max="3",exactMessage="boy bayil ligay def")
      * @Groups({"referentiel:write"})
      * @ApiSubresource()

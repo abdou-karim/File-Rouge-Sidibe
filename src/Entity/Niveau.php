@@ -17,14 +17,14 @@ class Niveau
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
-     * @Groups({"competence:read","RefGroupCompCom:read"})
+     * @Groups({"competence:read","RefGroupCompCom:read","GroupeCompetences:read"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence:read","RefGroupCompCom:read","competence:write"})
-     * @groups({"GroupeCompetences:write"})
+     * @groups({"GroupeCompetences:write","GroupeCompetences:read"})
      * @Groups({"referentiel:write"})
      */
     private $libelle;
@@ -32,7 +32,7 @@ class Niveau
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence:read","RefGroupCompCom:read","competence:write"})
-     * @Groups({"GroupeCompetences:write"})
+     * @Groups({"GroupeCompetences:write","GroupeCompetences:read"})
      * @Groups({"referentiel:write"})
      */
     private $crictereDevaluation;
@@ -40,7 +40,7 @@ class Niveau
     /**
      * @ORM\Column(type="string", length=255)
      * @Groups({"competence:read","RefGroupCompCom:read","competence:write"})
-     * @groups({"GroupeCompetences:write"})
+     * @groups({"GroupeCompetences:write","GroupeCompetences:read"})
      * @Groups({"referentiel:write"})
      */
     private $groupeDaction;

@@ -5,7 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Apprenants;
 use App\Entity\CommunityManager;
 use App\Entity\Formateurs;
-use App\Entity\Profils;
+use App\Entity\Profil;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;

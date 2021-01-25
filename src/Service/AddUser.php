@@ -45,12 +45,9 @@ class AddUser
     public function addUser(Request $request)
     {
         $profilAll = $this->profilsRepository->findAll();
-
+         $user = $request->request->all();
         foreach ($profilAll as $value) {
 
-            $user = $request->request->all();
-
-            
             $photo = $request->files->get("photo");
             $iriProfil = $this->iriConverter->getItemFromIri($user['profils'])->getLibelle();
 
@@ -89,7 +86,8 @@ class AddUser
                 return new JsonResponse($errors, Response::HTTP_BAD_REQUEST, [], true);
             }
 
-            $password = $user->getPlainPassword();
+//            $password = $user->getPlainPassword();
+            $password = 'Son@tel2019';
             $user->setPassword($this->encoder->encodePassword($user, $password));
             $user->setArchivage(false);
             if ($this->encoder->encodePassword($user, $password)) {
