@@ -101,6 +101,11 @@
       <path value="$PROJECT_DIR$/vendor/jms/metadata" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/clock" />
       <path value="$PROJECT_DIR$/vendor/nelmio/cors-bundle" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mailer" />
+      <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/sendgrid-mailer" />
     </include_path>
   </component>
   <component name="PhpProjectServersManager">

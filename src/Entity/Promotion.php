@@ -238,6 +238,11 @@ class Promotion
      */
     private $referentiels;
 
+    /**
+     * @ORM\Column(type="blob")
+     */
+    private $avatar;
+
     public function __construct()
     {
         $this->formateurs = new ArrayCollection();
@@ -463,6 +468,18 @@ class Promotion
     public function removeReferentiel(Referentiel $referentiel): self
     {
         $this->referentiels->removeElement($referentiel);
+
+        return $this;
+    }
+
+    public function getAvatar()
+    {
+        return $this->avatar;
+    }
+
+    public function setAvatar($avatar): self
+    {
+        $this->avatar = $avatar;
 
         return $this;
     }

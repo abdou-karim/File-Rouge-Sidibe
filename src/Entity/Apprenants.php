@@ -16,6 +16,7 @@ use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\BooleanFilter;
 /**
  *  @ApiFilter(BooleanFilter::class,properties={"archivage"})
  * @ApiResource(
+ *    routePrefix="/admin",
  *          attributes={
  *     "security"= "is_granted('ROLE_Administrateur')",
  *     "security_message"="Acces non autorisé",
@@ -64,6 +65,7 @@ class Apprenants extends User
      *     "promoGrApRefAp:read","promoDeleteAddApprenant:write"
      * })
      * @Groups({"profil:read"})
+     * @groups({"referentiel:read","referentiel:write"})
      */
     private $genre;
 
@@ -77,6 +79,7 @@ class Apprenants extends User
      *     })
      * @Groups({"profil:read"})
      * @Groups({"getApprenantsByPs"})
+     * @groups({"referentiel:read","referentiel:write"})
      * @Assert\NotBlank
      */
     private $adresse;
@@ -91,6 +94,7 @@ class Apprenants extends User
      * })
      * @Groups({"profil:read"})
      * @Groups({"getApprenantsByPs"})
+     * @groups({"referentiel:read","referentiel:write"})
      * @Assert\NotBlank
      */
     private $telephone;
@@ -102,6 +106,7 @@ class Apprenants extends User
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read"})
+     * @groups({"referentiel:read","referentiel:write"})
      * @ApiSubresource()
      *
      */
@@ -118,6 +123,7 @@ class Apprenants extends User
      * @Groups ({"promo_app_attente:read","promotion:write"})
      * @Groups({"user:read", "user:write"})
      * @Groups({"profil:read"})
+     * @groups({"referentiel:read","referentiel:write"})
      */
     private $statut;
 
@@ -126,6 +132,11 @@ class Apprenants extends User
      * @ORM\JoinColumn(nullable=true)
      */
     private $promotion;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Referentiel::class, inversedBy="apprenants")
+     */
+    private $referentiel;
 
     public function __construct()
     {
@@ -233,6 +244,18 @@ class Apprenants extends User
     public function setPromotion(?Promotion $promotion): self
     {
         $this->promotion = $promotion;
+
+        return $this;
+    }
+
+    public function getReferentiel(): ?Referentiel
+    {
+        return $this->referentiel;
+    }
+
+    public function setReferentiel(?Referentiel $referentiel): self
+    {
+        $this->referentiel = $referentiel;
 
         return $this;
     }

@@ -75,9 +75,10 @@ class User implements UserInterface
      * @Groups({"user:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
-     *     "promoDeleteAddApprenant:write"
+     *     "promoDeleteAddApprenant:write","apprenant:read", "apprenant:write"
      * })
      * @Groups({"profil:read"})
+     * @groups({"referentiel:read","referentiel:write"})
      */
     private $id;
 
@@ -87,8 +88,9 @@ class User implements UserInterface
      * @Groups({"profil:read","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",*
-     *     "promoDeleteAddApprenant:write"
+     *     "promoDeleteAddApprenant:write","apprenant:read", "apprenant:write"
      * })
+     * @groups({"referentiel:read","referentiel:write"})
      * @Assert\NotBlank
      */
     private $username;
@@ -108,8 +110,9 @@ class User implements UserInterface
      * @Groups({"profil:read","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
-     *     "promoDeleteAddApprenant:write"
+     *     "promoDeleteAddApprenant:write","apprenant:read", "apprenant:write"
      *     })
+     * @groups({"referentiel:read","referentiel:write"})
      * @Assert\NotBlank
      */
     private $fisrtname;
@@ -120,8 +123,9 @@ class User implements UserInterface
      * @Groups({"profil:read","profilSortie:read"})*
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
-     *     "promoDeleteAddApprenant:write"
+     *     "promoDeleteAddApprenant:write","apprenant:read", "apprenant:write"
      *     })
+     * @groups({"referentiel:read","referentiel:write"})
      * @Assert\NotBlank
      */
     private $lastname;
@@ -132,12 +136,13 @@ class User implements UserInterface
      * @Groups({"profil:read","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read",
-     *     "promoDeleteAddApprenant:write"
+     *     "promoDeleteAddApprenant:write","apprenant:read", "apprenant:write"
      *     })
      * @Assert\NotBlank
      * @Assert\Email(
      *     message = "L'email '{{ value }}' n'est pas valide"
      * )
+     * @groups({"referentiel:read","referentiel:write"})
      */
     private $email;
 
@@ -147,8 +152,9 @@ class User implements UserInterface
      * @Groups({"profil:read","profilSortie:read"})
      * @Groups({"groupe:read","groupe:write","groupeApprenant:read","formateur:read","reFormGr:read",
      *     "grPrincipal:read","promo_app_attente:read","promotion:write","promoGrApRefAp:read"
-     * ,"promoDeleteAddApprenant:write"
+     * ,"promoDeleteAddApprenant:write","apprenant:read", "apprenant:write"
      *     })
+     * @groups({"referentiel:read","referentiel:write"})
      */
     private $photo;
 
@@ -162,6 +168,7 @@ class User implements UserInterface
     /**
      * @ORM\ManyToOne(targetEntity=Profil::class)
      * @Groups({"user:read", "user:write"})
+     * @groups({"referentiel:read","referentiel:write"})
      */
     private $profils;
 

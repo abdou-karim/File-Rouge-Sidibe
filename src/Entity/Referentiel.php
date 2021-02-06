@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints\File;
  *     routePrefix="/admin",
  *     attributes={
  *      "pagination_enabled"=true,
- *     "pagination_items_per_page"=5,
+ *     "pagination_items_per_page"=20,
  *     "security"= "is_granted('ROLE_Administrateur') or is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager')",
  *     "security_message"="Acces non autorisé",
  *     },
@@ -141,6 +141,13 @@ class Referentiel
      */
     private $cricterDevaluations;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Apprenants::class, mappedBy="referentiel")
+     * @ApiSubresource
+     * @groups({"referentiel:read","referentiel:write"})
+     */
+    private $apprenants;
+
 
     public function __construct()
     {
@@ -148,6 +155,7 @@ class Referentiel
         $this->cricterDadmissions = new ArrayCollection();
         $this->cricterDevaluations = new ArrayCollection();
         $this->promotions = new ArrayCollection();
+        $this->apprenants = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -302,6 +310,36 @@ class Referentiel
     {
         if ($this->cricterDevaluations->removeElement($cricterDevaluation)) {
             $cricterDevaluation->removeReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Apprenants[]
+     */
+    public function getApprenants(): Collection
+    {
+        return $this->apprenants;
+    }
+
+    public function addApprenant(Apprenants $apprenant): self
+    {
+        if (!$this->apprenants->contains($apprenant)) {
+            $this->apprenants[] = $apprenant;
+            $apprenant->setReferentiel($this);
+        }
+
+        return $this;
+    }
+
+    public function removeApprenant(Apprenants $apprenant): self
+    {
+        if ($this->apprenants->removeElement($apprenant)) {
+            // set the owning side to null (unless already changed)
+            if ($apprenant->getReferentiel() === $this) {
+                $apprenant->setReferentiel(null);
+            }
         }
 
         return $this;
