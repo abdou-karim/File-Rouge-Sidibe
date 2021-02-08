@@ -28,7 +28,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *     },
  *        normalizationContext={"groups"={"profilSortie:read"}},
  *          denormalizationContext={"groups"={"profilSortie:write"}},
- *          attributes={ "pagination_enabled"=true,"pagination_items_per_page"=10},
+ *          attributes={ "pagination_enabled"=true,"pagination_items_per_page"=5},
  *
  *     )
  */

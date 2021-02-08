@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints\File;
  *     routePrefix="/admin",
  *     attributes={
  *      "pagination_enabled"=true,
- *     "pagination_items_per_page"=20,
+ *     "pagination_items_per_page"=5,
  *     "security"= "is_granted('ROLE_Administrateur') or is_granted('ROLE_Formateur') or is_granted('ROLE_Community Manager')",
  *     "security_message"="Acces non autorisé",
  *     },

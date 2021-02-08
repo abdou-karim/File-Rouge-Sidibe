@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b22643e4-9f50-4fc3-83ad-a053fdb8ef80" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Fil-rouge-sa.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PromotionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PromotionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReferentielController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReferentielController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Apprenants.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Apprenants.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Promotion.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Promotion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/ProfilSortie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/ProfilSortie.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Referentiel.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Referentiel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Service/AddFileService.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Service/AddFileService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -348,6 +337,9 @@
       <workItem from="1612100554999" duration="119000" />
       <workItem from="1612101206298" duration="152000" />
       <workItem from="1612112823794" duration="2591000" />
+      <workItem from="1612603848584" duration="725000" />
+      <workItem from="1612803642080" duration="336000" />
+      <workItem from="1612808390414" duration="59000" />
     </task>
     <servers />
   </component>
